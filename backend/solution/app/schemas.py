@@ -21,3 +21,21 @@ class ErrorResponse(BaseModel):
 
 class HealthResponse(BaseModel):
     status: str
+
+
+# Task 1 · GET /portfolios/{id} (owner: me). Values the CRM leaves out are None, never 0 (A3).
+class PortfolioMetadata(CamelModel):
+    portfolio_id: str
+    client_id: str | None
+    label: str | None
+    currency: str | None
+    total_market_value: float | None
+    day_change_amount: float | None
+    day_change_percent: float | None
+    total_return_since_inception: float | None
+    as_of: str | None
+
+
+class PortfolioResponse(PortfolioMetadata):
+    stale: bool
+    cached_at: str

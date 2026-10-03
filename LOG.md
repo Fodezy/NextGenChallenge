@@ -21,3 +21,4 @@ each task.
 [plan] CLAUDE.md updated for the 3-person Python/FastAPI build: owners, shared files, flat errors, decimal CAD, Ruff + pytest before merge
 [plan] Root .gitignore: ignore generated backend/fixtures/performance-history.json
 [plan] .gitattributes: LOG.md merge=union, so parallel log lines merge without conflicts
+[me] Task 1 GET /portfolios/{id} live: table-driven CRM mapper (ok/nested/missing), 404 not_found, 503 crm_unavailable on error or 2 s deadline; shared httpx client + CRM default 127.0.0.1 (localhost cost ~450 ms on Windows); 45 tests green
