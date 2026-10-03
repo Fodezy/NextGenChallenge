@@ -21,6 +21,8 @@ each task.
 [plan] CLAUDE.md updated for the 3-person Python/FastAPI build: owners, shared files, flat errors, decimal CAD, Ruff + pytest before merge
 [plan] Root .gitignore: ignore generated backend/fixtures/performance-history.json
 [plan] .gitattributes: LOG.md merge=union, so parallel log lines merge without conflicts
+[B] GET /portfolios/{id}/performance-history live: R5 ranges (UTC today, month-end clamp), 400 invalid_range before 404, 20 tests (39 total) green, ruff clean; A8–A10 in BRIEF §9, D1–D4 in architecture/DECISIONS.md
 [me] Task 1 GET /portfolios/{id} live: table-driven CRM mapper (ok/nested/missing), 404 not_found, 503 crm_unavailable on error or 2 s deadline; shared httpx client + CRM default 127.0.0.1 (localhost cost ~450 ms on Windows); 45 tests green
 [plan] Wireframe rough pass (Claude Design, 6 artboards: happy path P-9001, stale, CRM down, loading, empty, P-9002 null day %): https://claude.ai/artifact/MsRKZyrShvDELK1n3KRuvW
 [plan] Wireframe source committed to design/wireframe/ (README: artboards, agreed answers, 6 open review points) so the team can design from it
+[B] Pulled main (Task 1) into task-3 branch: Task 3 assumptions renumbered A8–A10 → A9–A11 (main kept A8 for CRM mapping); 77 tests green
