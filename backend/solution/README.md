@@ -64,6 +64,11 @@ ruff check .
 
 ## Endpoints
 
+- `GET /portfolios/{id}`: portfolio metadata from the mock CRM (Task 1), behind a 30 s in-memory
+  cache (Task 9). Fresh copy → no CRM call. CRM down, slow (> 2 s) or unreadable → the last copy
+  with `stale: true` and its original `cachedAt`; no copy → 503 `crm_unavailable`. Unknown id →
+  404, never cached. A success after a stale period replaces the copy (`stale: false`). Check it
+  with the CRM's `/__control` and `/__stats` (`backend/CRM.md`). Decisions: D5.
 - `GET /portfolios/{id}/performance-history?range=1D|1M|YTD|1Y|All` (default `All`): daily
   `[{date, marketValue}]`, oldest first, counted back from today (UTC). Invalid range → 400
   `invalid_range` (exact, case-sensitive); unknown id → 404. A stale history file gives `[]` for

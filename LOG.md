@@ -38,3 +38,6 @@ each task.
 [A] Task 4 step 2: drafted 12 R7 tests for missing/malformed/wrong credentials, configured valid token, open health, and rejection before CRM/history access; awaiting test approval, middleware unchanged.
 [A] Created holdings_calc.py function scaffold and 7 R3/R4 tests: AAPL/BND values, zero position/total, zero previous close, empty list, exact money and input preservation; implementation awaits test approval.
 [A] Implemented calculate_holdings with Decimal two-pass values/weights; zero quantity fields zero, zero previous close percent null, empty/zero-total handled, inputs preserved, no early rounding; 7 approved tests passed and Ruff clean.
+[B] Wireframe review changes on design/wireframe-kpi-allocation-filter: client name larger than title, bordered KPI tiles, allocation Bar/Pie toggle (+ artboard 7), holdings filter bar (+ artboard 8: filtered, no match); needs clientName in /portfolios/:id (open point 3)
+[B] Wireframe v2 canvas (review changes, 8 artboards): https://claude.ai/artifact/DoNXXJ4aLxynedM1N716Lu
+[me] Task 9 CRM cache live: 30 s TTL, stale fallback on error/timeout/garbage, cold 503, 404 evicts; live check vs mock /__stats (2 calls → +1, stale after expiry, P-SINGLE cold 503, refresh after recovery); 94 tests green

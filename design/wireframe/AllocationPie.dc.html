@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Allocation, pie view</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F5F7}
+a{color:#0F6E6E}a:hover{color:#0B5454}
+.num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.seg button{font:inherit;font-size:13px;padding:0 14px;min-height:36px;border:0;background:#FFFFFF;color:#14171C;cursor:pointer}
+.seg button+button{border-left:1px solid #D5D9DE}
+.seg button[aria-pressed="true"]{background:#0F6E6E;color:#FFFFFF}
+th{font-size:12px;font-weight:600;color:#5B6470;text-align:right;padding:10px 12px;border-bottom:1px solid #E3E6EA;white-space:nowrap}
+td{padding:12px;border-bottom:1px solid #EEF0F2;text-align:right;white-space:nowrap}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+@media (max-width:860px){.grid2{grid-template-columns:minmax(0,1fr) !important}}
+@media (max-width:860px){.kpis{grid-template-columns:minmax(0,1fr) !important}}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171C; background: #F4F5F7; min-height: 100%">
+<div style="padding: 24px 32px 40px; display: flex; flex-wrap: wrap; gap: 24px; align-items: flex-start">
+<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; width: 380px; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Allocation</h2>
+<div class="seg" role="group" aria-label="Allocation view" style="display: inline-flex; border: 1px solid #D5D9DE; border-radius: 8px; overflow: hidden">
+<button type="button" aria-pressed="false">Bar</button>
+<button type="button" aria-pressed="true">Pie</button>
+</div>
+</div>
+<div style="font-size: 13px; color: #5B6470">Taxable Brokerage · P-9001</div>
+<div style="display: flex; justify-content: center"><svg width="180" height="180" viewBox="0 0 180 180" role="img" aria-label="Pie chart: Equity 55.79%, Fixed Income 44.21%"><path d="M90,90 L90,10 A80,80 0 1 1 61.53,164.76 Z" fill="#0F6E6E" stroke="#FFFFFF" stroke-width="2"></path><path d="M90,90 L61.53,164.76 A80,80 0 0 1 90,10 Z" fill="#9CC9C9" stroke="#FFFFFF" stroke-width="2"></path></svg></div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+<div style="display: grid; grid-template-columns: 12px minmax(0, 1fr) auto auto; gap: 10px; align-items: center">
+<div style="width: 12px; height: 12px; border-radius: 3px; background: #0F6E6E"></div>
+<div>Equity</div>
+<div class="num">$27,300.00</div>
+<div class="num" style="color: #5B6470; min-width: 56px; text-align: right">55.79%</div>
+</div>
+<div style="display: grid; grid-template-columns: 12px minmax(0, 1fr) auto auto; gap: 10px; align-items: center">
+<div style="width: 12px; height: 12px; border-radius: 3px; background: #9CC9C9"></div>
+<div>Fixed Income</div>
+<div class="num">$21,630.00</div>
+<div class="num" style="color: #5B6470; min-width: 56px; text-align: right">44.21%</div>
+</div>
+</div>
+</div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px; width: 380px; box-sizing: border-box">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Allocation</h2>
+<div class="seg" role="group" aria-label="Allocation view" style="display: inline-flex; border: 1px solid #D5D9DE; border-radius: 8px; overflow: hidden">
+<button type="button" aria-pressed="false">Bar</button>
+<button type="button" aria-pressed="true">Pie</button>
+</div>
+</div>
+<div style="font-size: 13px; color: #5B6470">Single Asset Class · P-SINGLE</div>
+<div style="display: flex; justify-content: center"><svg width="180" height="180" viewBox="0 0 180 180" role="img" aria-label="Pie chart: Equity 100%"><circle cx="90" cy="90" r="80" fill="#0F6E6E"></circle></svg></div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+<div style="display: grid; grid-template-columns: 12px minmax(0, 1fr) auto auto; gap: 10px; align-items: center">
+<div style="width: 12px; height: 12px; border-radius: 3px; background: #0F6E6E"></div>
+<div>Equity</div>
+<div class="num">$2,275.00</div>
+<div class="num" style="color: #5B6470; min-width: 56px; text-align: right">100.00%</div>
+</div>
+</div>
+<div style="font-size: 12px; color: #5B6470">One asset class: a full circle, never an empty or missing slice.</div>
+</div>
+<div style="flex: 1 1 260px; max-width: 300px; font-size: 13px; color: #5B6470; display: flex; flex-direction: column; gap: 8px; padding-top: 8px"><div style="font-weight: 600; color: #14171C">Bar or Pie</div><div>The toggle switches the same allocation data between the bar (default, as on the main board) and a pie. Slices start at 12 o'clock, largest first, in legend order. The choice is remembered per viewer.</div><div>Zero-value classes (ZERO, a closed Equity position) add nothing to a slice.</div></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1240,"height":520}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

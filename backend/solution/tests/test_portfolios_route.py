@@ -9,6 +9,8 @@ from fastapi.testclient import TestClient
 
 from app.config import get_settings
 from app.main import create_app
+from app.routers.portfolios import get_portfolio_cache
+from app.services.cache import TtlCache
 from app.services.crm_client import get_crm_http
 from tests.crm_fakes import RETRIEVED_AT, fake_http, ok_handler, slow_handler, status_handler
 
@@ -38,6 +40,9 @@ def crm():
 
     app = create_app()
     app.dependency_overrides[get_crm_http] = override
+    # Task 1 tests every request against the CRM: an empty cache per request, so no test sees
+    # another's cached copy. Caching itself is tested in test_portfolio_cache.py.
+    app.dependency_overrides[get_portfolio_cache] = lambda: TtlCache(ttl_seconds=30)
 
     def use(handler) -> TestClient:
         state["handler"] = handler

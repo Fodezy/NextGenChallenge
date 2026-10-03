@@ -142,3 +142,7 @@ datetimes with `Z`) · every error is flat **`{ "error": "<code>", "message": "<
   (31 Mar − 1M = 28 Feb; 29 Feb 2028 − 1Y = 28 Feb 2027). "Today" is the UTC date.
 - A11: history that exists but has no points inside the window returns 200 `[]` (e.g. a stale
   history file with `range=1D`); nothing is padded and no older point is substituted.
+- A12: the CRM cache (Task 9) is in memory, per portfolio id, TTL 30 s (fresh while under 30 s).
+  It caches the mapped metadata. Expired copies are kept with no maximum age, as the stale fallback
+  for a CRM error, timeout or unreadable reply. A CRM 404 is never cached and removes any copy.
+  Concurrent misses may both call the CRM (no lock); the cache empties on restart.

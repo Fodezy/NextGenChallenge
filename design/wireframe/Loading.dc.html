@@ -13,6 +13,7 @@
 body{margin:0;background:#F4F5F7}
 a{color:#0F6E6E}a:hover{color:#0B5454}
 @media (max-width:860px){.grid2{grid-template-columns:minmax(0,1fr) !important}}
+@media (max-width:860px){.kpis{grid-template-columns:minmax(0,1fr) !important}}
 </style>
 </helmet>
 <div aria-busy="true" style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171C; background: #F4F5F7; min-height: 100%">
@@ -21,16 +22,33 @@ a{color:#0F6E6E}a:hover{color:#0B5454}
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
 <div style="display: flex; align-items: center; gap: 10px">
 <div style="width: 10px; height: 10px; border-radius: 50%; background: #0F6E6E"></div>
-<div style="font-size: 18px; font-weight: 600">Portfolio dashboard</div>
-<div style="font-size: 13px; color: #5B6470">Client abc123</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 13px; font-weight: 500; color: #5B6470">Portfolio dashboard</div>
+<div style="display: flex; align-items: baseline; gap: 10px"><div style="font-size: 28px; font-weight: 600; letter-spacing: -0.4px; line-height: 1.15">Jane Doe</div><div style="font-size: 13px; color: #5B6470">Client abc123</div></div>
+</div>
 </div>
 <div style="width: 240px; height: 40px; border-radius: 8px; background: #E6E9ED"></div>
 </div>
 
-<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 10px">
+<div style="display: flex; flex-direction: column; gap: 10px">
 <div style="width: 220px; height: 14px; border-radius: 4px; background: #E6E9ED"></div>
-<div style="width: 300px; height: 40px; border-radius: 6px; background: #E6E9ED"></div>
-<div style="width: 160px; height: 12px; border-radius: 4px; background: #E6E9ED"></div>
+<div class="kpis" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<div style="background: #FFFFFF; border: 1.5px solid #CDD3DA; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="width: 90px; height: 12px; border-radius: 4px; background: #E6E9ED"></div>
+<div style="width: 70%; height: 32px; border-radius: 6px; background: #E6E9ED"></div>
+<div style="width: 50%; height: 12px; border-radius: 4px; background: #EEF0F3"></div>
+</div>
+<div style="background: #FFFFFF; border: 1.5px solid #CDD3DA; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="width: 90px; height: 12px; border-radius: 4px; background: #E6E9ED"></div>
+<div style="width: 70%; height: 32px; border-radius: 6px; background: #E6E9ED"></div>
+<div style="width: 50%; height: 12px; border-radius: 4px; background: #EEF0F3"></div>
+</div>
+<div style="background: #FFFFFF; border: 1.5px solid #CDD3DA; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="width: 90px; height: 12px; border-radius: 4px; background: #E6E9ED"></div>
+<div style="width: 70%; height: 32px; border-radius: 6px; background: #E6E9ED"></div>
+<div style="width: 50%; height: 12px; border-radius: 4px; background: #EEF0F3"></div>
+</div>
+</div>
 </div>
 
 <div class="grid2" style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 20px">
@@ -57,7 +75,7 @@ a{color:#0F6E6E}a:hover{color:#0B5454}
 </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":640}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":680}}'>
 class Component extends DCLogic {
 renderVals() {
 return {};
