@@ -100,7 +100,7 @@ holding_id FK, type BUY|SELL, quantity, price, date)`.
 | Method | Path | Response (200) | Errors |
 |---|---|---|---|
 | GET | `/health` | `{ status: "ok" }` (no auth) | |
-| GET | `/portfolios/:id` | `{ portfolioId, clientId, label, currency, totalMarketValue, dayChangeAmount, dayChangePercent, totalReturnSinceInception, asOf, stale, cachedAt }` | 401 · 404 `not_found` · 503 `crm_unavailable` |
+| GET | `/portfolios/:id` | `{ portfolioId, clientId, clientName, label, currency, totalMarketValue, dayChangeAmount, dayChangePercent, totalReturnSinceInception, asOf, stale, cachedAt }` | 401 · 404 `not_found` · 503 `crm_unavailable` |
 | GET | `/portfolios/:id/holdings` | `[{ ticker, name, assetClass, quantity, costBasisPerShare, price, previousClosePrice, marketValue, weightPercent, unrealizedGainLoss, dayChangeAmount, dayChangePercent }]` | 401 · 404 `not_found` |
 | GET | `/portfolios/:id/performance-history?range=1D\|1M\|YTD\|1Y\|All` | `[{ date, marketValue }]`, oldest first | 401 · 400 `invalid_range` · 404 `not_found` |
 | GET | `/portfolios/:id/allocation` | `[{ assetClass, value, percent }]` | 401 · 404 `not_found` |

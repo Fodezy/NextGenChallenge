@@ -17,6 +17,7 @@ from tests.crm_fakes import RETRIEVED_AT, fake_http, ok_handler, slow_handler, s
 FIELDS = {
     "portfolioId",
     "clientId",
+    "clientName",
     "label",
     "currency",
     "totalMarketValue",

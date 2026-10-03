@@ -36,6 +36,7 @@ class HistoryPoint(CamelModel):
 class PortfolioMetadata(CamelModel):
     portfolio_id: str
     client_id: str | None
+    client_name: str | None
     label: str | None
     currency: str | None
     total_market_value: float | None

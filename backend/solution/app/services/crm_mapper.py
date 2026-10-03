@@ -20,6 +20,7 @@ ACCOUNT_REF_PATHS: tuple[str, ...] = ("account.acct_ref",)
 
 FIELD_PATHS: dict[str, tuple[str, ...]] = {
     "client_id": ("client_record.client_id",),
+    "client_name": ("client_record.full_name",),
     "label": ("account.acct_nickname",),
     "currency": ("account.curr_val.ccy",),
     "total_market_value": ("account.curr_val.amt",),

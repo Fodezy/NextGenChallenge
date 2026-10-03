@@ -44,3 +44,7 @@ each task.
 [A] Task 2: added holdings router and camelCase HoldingResponse, registered endpoint; Decimal calculations reused, money rounded at response boundary; drafted 6 HTTP tests for contract, empty/zero cases, unknown ID and fresh recomputation.
 [A] Task 2 verified: 107 completed backend tests passed (unfinished Task 4 draft excluded); Ruff lint and formatting clean; endpoint includes correct numeric fields, empty/closed/zero-close cases, 404 and fresh recalculation.
 [me] docs/personas.md added: advisor, client, developer demo walkthroughs
+[plan] Wireframe v2 approved. Review decisions: 0-share rows show "—" for day %; CRM's 0.00% shown as-is (README note); 1D stays per D1; only Market value sorts. Recharts for charts
+[plan] Web UI plan: real API for header (Tasks 1/9) and chart (Task 3); holdings + allocation on contract-shaped mocks until Tasks 2/5 land, then switch per endpoint. Contract change first: clientName on GET /portfolios/:id
+[me] clientName added to GET /portfolios/:id (CRM full_name; BRIEF §7 updated); 95 backend tests green
+[me] Web UI built on web-ui: header + KPI tiles (stale banner, CRM-down card), performance chart (Recharts, range buttons), allocation (Bar/Pie), holdings (search, class filter, hide closed, sort). Real API for portfolio + history; holdings + allocation on contract mocks: flip SOURCES in web/src/api.ts when Tasks 2/5 land. 16 web tests green

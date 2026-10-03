@@ -8,12 +8,13 @@ from app.services.crm_mapper import ACCOUNT_LIST_PATHS, FIELD_PATHS, map_portfol
 from tests.crm_fakes import RETRIEVED_AT, crm_payload
 
 
-def test_ok_shape_maps_all_nine_fields():
+def test_ok_shape_maps_all_fields():
     result = map_portfolio(crm_payload("P-9001"), "P-9001")
 
     assert result.model_dump() == {
         "portfolio_id": "P-9001",
         "client_id": "abc123",
+        "client_name": "Jane Doe",
         "label": "Taxable Brokerage",
         "currency": "CAD",
         "total_market_value": 48930,
@@ -45,6 +46,15 @@ def test_missing_mode_maps_null_amount_and_absent_nickname_to_none():
     assert result.label is None
     assert result.currency == "CAD"
     assert result.day_change_amount == 30
+
+
+def test_missing_or_blank_full_name_maps_to_none():
+    raw = crm_payload("P-9001")
+    del raw["client_record"]["full_name"]
+    assert map_portfolio(raw, "P-9001").client_name is None
+
+    raw["client_record"]["full_name"] = "   "
+    assert map_portfolio(raw, "P-9001").client_name is None
 
 
 def test_null_or_absent_nested_objects_map_to_none():
