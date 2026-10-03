@@ -22,3 +22,11 @@ each task.
 [plan] Root .gitignore: ignore generated backend/fixtures/performance-history.json
 [plan] .gitattributes: LOG.md merge=union, so parallel log lines merge without conflicts
 [me] Task 1 GET /portfolios/{id} live: table-driven CRM mapper (ok/nested/missing), 404 not_found, 503 crm_unavailable on error or 2 s deadline; shared httpx client + CRM default 127.0.0.1 (localhost cost ~450 ms on Windows); 45 tests green
+
+[plan] Pulled origin/main: fast-forwarded main to 94a18d9
+
+[plan] Checked git status: main up to date; LOG.md has the required local step entry
+
+[me] Frontend Task 2: approved summary design integrated in web scaffold; existing portfolio API, currency/decimal-percent formatting, neutral zero, null fallback, loading and Retry; no backend contract changes.
+[me] Added blank backend .env and .env.example for optional OPENROUTER_API_KEY; Git ignore and run instructions; no credential saved or AI integration added.
+[me] Frontend summary changes stashed locally; branch publishes environment template and setup documentation only, with original web scaffold active.

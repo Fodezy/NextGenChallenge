@@ -1,4 +1,4 @@
-﻿# Portfolio API (FastAPI) + web shell (Vite/React/TS)
+# Portfolio API (FastAPI) + web shell (Vite/React/TS)
 
 Backend for the portfolio dashboard (see `BRIEF.md` at the repo root). Python 3.14, FastAPI,
 httpx, Pydantic v2, pytest, Ruff. Service on **:3000**, mock CRM on **:4002**, web dev server on
@@ -65,7 +65,7 @@ ruff check .
 ## Web (backend/solution/web)
 
 Vite + React + TypeScript (strict) + Tailwind. One page for now: it calls `/health` and shows
-"API: ok" or an error. Vite proxies `/api/*` to `http://localhost:3000` with the `/api` prefix
+"API: ok" or an error. The summary-card frontend work is currently stashed locally. Vite proxies `/api/*` to `http://localhost:3000` with the `/api` prefix
 stripped, so there is no CORS. `src/api.ts` sends `Authorization: Bearer $VITE_API_TOKEN`
 (default `superday-demo-token`).
 
@@ -95,3 +95,22 @@ app/data/repository.py  read access to seed.json and performance-history.json
 tests/             test_<module>.py
 web/               frontend shell
 ```
+
+## Optional AI provider key
+
+Add your replacement key to `backend/solution/.env` under `OPENROUTER_API_KEY`.
+This file is ignored by Git. Never put provider keys in frontend code or `VITE_` variables.
+The portfolio dashboard does not use this key; an AI feature must be implemented separately.
+
+From `backend/solution/`, load the environment file when starting FastAPI
+(same command on macOS / Linux and Windows):
+
+```sh
+uvicorn app.main:app --port 3000 --reload --env-file .env
+```
+
+If setting up another checkout, copy the blank template first:
+
+macOS / Linux: `cp .env.example .env`
+
+Windows (PowerShell): `Copy-Item .env.example .env`
