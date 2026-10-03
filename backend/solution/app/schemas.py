@@ -66,3 +66,11 @@ class HoldingResponse(CamelModel):
     unrealized_gain_loss: float
     day_change_amount: float
     day_change_percent: float | None
+
+
+class AllocationEntry(CamelModel):
+    """Task 5: value held in one asset class and its share of the portfolio (a fraction)."""
+
+    asset_class: str
+    value: float
+    percent: float

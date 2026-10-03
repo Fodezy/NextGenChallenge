@@ -146,3 +146,10 @@ datetimes with `Z`) · every error is flat **`{ "error": "<code>", "message": "<
   It caches the mapped metadata. Expired copies are kept with no maximum age, as the stale fallback
   for a CRM error, timeout or unreadable reply. A CRM 404 is never cached and removes any copy.
   Concurrent misses may both call the CRM (no lock); the cache empties on restart.
+- A13: allocation (Task 5) totals the holdings' market values (qty × price via Task 2's calc), not the
+  CRM total, so the endpoint stays on local seed data. `value` is rounded to 2 dp in the response,
+  `percent` is unrounded; entries are in first-appearance order of the seed holdings.
+- A14: only asset classes present in the portfolio are returned; no zero-filled Cash or Alternatives.
+  A class made only of zero-quantity rows (ZERO) still appears with value 0.
+- A15: holdings exist but the total is 0 → every class has `value: 0, percent: 0` (no division).
+- A16: the asset class is an exact, case-sensitive match: `Equity` and `equity` are two entries.
