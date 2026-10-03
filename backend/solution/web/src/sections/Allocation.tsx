@@ -1,4 +1,4 @@
-// Allocation by asset class from GET /portfolios/:id/allocation (Task 5; mock until it ships).
+// Allocation by asset class from GET /portfolios/:id/allocation (Task 5).
 import { useState } from 'react';
 import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from 'recharts';
 import { getAllocation } from '../api';
