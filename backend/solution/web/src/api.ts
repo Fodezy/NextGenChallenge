@@ -63,10 +63,10 @@ export async function get<T>(path: string, init?: { signal?: AbortSignal }): Pro
 }
 
 /** Where each not-yet-built endpoint's data comes from. Flip to 'api' when the backend ships it. */
-export const SOURCES = { holdings: 'mock', allocation: 'mock' } as const satisfies Record<
-  string,
-  'mock' | 'api'
->;
+export const SOURCES: Record<'holdings' | 'allocation', 'mock' | 'api'> = {
+  holdings: 'api',
+  allocation: 'mock',
+};
 
 /** Checks a response against the contract; a mismatch names the field (join-up debugging). */
 export function checkContract<T>(path: string, schema: ZodType<T>, body: unknown): T {
