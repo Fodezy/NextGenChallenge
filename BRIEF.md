@@ -133,3 +133,6 @@ datetimes with `Z`) · every error is flat **`{ "error": "<code>", "message": "<
 - A6: history ranges count back from today; the history file is regenerated so YTD uses this year.
 - A7: on a successful CRM call after a stale period, the cache is replaced and `stale` goes back to
   `false`; `cachedAt` is the time of the CRM fetch.
+- A8: CRM mapping is a field → candidate-paths table (first match wins); a new legacy name or nesting
+  is one line. Numeric strings are parsed, unreadable values → `null`, currency is upper-cased.
+  Percentages are taken as decimals as the spec says; units can't be detected, so no guessing.

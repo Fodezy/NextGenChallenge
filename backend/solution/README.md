@@ -1,4 +1,4 @@
-# Portfolio API (FastAPI) + web shell (Vite/React/TS)
+﻿# Portfolio API (FastAPI) + web shell (Vite/React/TS)
 
 Backend for the portfolio dashboard (see `BRIEF.md` at the repo root). Python 3.14, FastAPI,
 httpx, Pydantic v2, pytest, Ruff. Service on **:3000**, mock CRM on **:4002**, web dev server on
@@ -7,7 +7,7 @@ httpx, Pydantic v2, pytest, Ruff. Service on **:3000**, mock CRM on **:4002**, w
 - **Mock auth token:** `superday-demo-token` (env `API_TOKEN`). Send `Authorization: Bearer superday-demo-token`.
   `/health` needs no token.
 - **Errors** are always flat: `{"error": "<code>", "message": "<text>"}`.
-- **Config** (env vars, defaults): `PORT=3000`, `CRM_BASE_URL=http://localhost:4002`,
+- **Config** (env vars, defaults): `PORT=3000`, `CRM_BASE_URL=http://127.0.0.1:4002`,
   `CRM_TIMEOUT_SECONDS=2.0`, `API_TOKEN=superday-demo-token`, `CACHE_TTL_SECONDS=30`.
 
 All commands run from `backend/solution/` unless noted.
@@ -78,7 +78,7 @@ npm run typecheck
 npm run build
 ```
 
-Custom token: macOS / Linux `cp .env.example .env.local` · Windows (PowerShell)
+Custom token: macOS / Linux `cp .env.example .env.local` Â· Windows (PowerShell)
 `Copy-Item .env.example .env.local`, then edit `VITE_API_TOKEN`.
 
 ## Layout

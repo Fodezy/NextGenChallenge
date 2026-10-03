@@ -10,6 +10,9 @@ target-version = "py314"
 [tool.ruff.lint]
 select = ["E", "F", "I", "B", "UP"]
 
+[tool.ruff.lint.isort]
+known-first-party = ["app", "tests"]
+
 [tool.ruff.lint.flake8-bugbear]
 # FastAPI's dependency style (Query(...), Depends(...) as defaults) is idiomatic.
 extend-immutable-calls = ["fastapi.Depends", "fastapi.Query", "fastapi.Path", "fastapi.Header"]
