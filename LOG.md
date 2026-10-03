@@ -26,3 +26,4 @@ each task.
 [plan] Wireframe rough pass (Claude Design, 6 artboards: happy path P-9001, stale, CRM down, loading, empty, P-9002 null day %): https://claude.ai/artifact/MsRKZyrShvDELK1n3KRuvW
 [plan] Wireframe source committed to design/wireframe/ (README: artboards, agreed answers, 6 open review points) so the team can design from it
 [B] Pulled main (Task 1) into task-3 branch: Task 3 assumptions renumbered A8–A10 → A9–A11 (main kept A8 for CRM mapping); 77 tests green
+[me] Task 9 CRM cache live: 30 s TTL, stale fallback on error/timeout/garbage, cold 503, 404 evicts; live check vs mock /__stats (2 calls → +1, stale after expiry, P-SINGLE cold 503, refresh after recovery); 94 tests green
