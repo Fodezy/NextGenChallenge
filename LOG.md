@@ -51,3 +51,4 @@ each task.
 [B] Task 5 GET /portfolios/:id/allocation live: sums Task 2 market values by asset class, P-SINGLE 1.0, P-EMPTY [], 404; A13–A16 added; 125 tests green
 [me] UI holdings switched to the real API (Task 2): live /holdings for P-9001, P-9002, P-EMPTY, P-SINGLE passes the UI contract check; 404 for unknown id. Allocation still on mock until Task 5
 [me] UI allocation switched to the real API (Task 5); mocks.ts and the mock switch removed: every dashboard section now reads the live backend. 16 web tests green, build OK
+[plan] Task 4 (auth) left out by team decision, out of time; README states it as unfinished work with the planned design

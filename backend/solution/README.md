@@ -4,8 +4,11 @@ Backend for the portfolio dashboard (see `BRIEF.md` at the repo root). Python 3.
 httpx, Pydantic v2, pytest, Ruff. Service on **:3000**, mock CRM on **:4002**, web dev server on
 **:5173**.
 
-- **Mock auth token:** `superday-demo-token` (env `API_TOKEN`). Send `Authorization: Bearer superday-demo-token`.
-  `/health` needs no token.
+- **Auth (Task 4) is not implemented: unfinished, by team decision (out of time).** Every endpoint
+  currently answers without a token. The web app already sends `Authorization: Bearer
+  superday-demo-token` (env `API_TOKEN`), so adding the check in `app/auth.py` (planned: all routes
+  but `/health`, 401 `{"error": "unauthorized", ...}` for a missing, malformed or wrong token)
+  needs no frontend change.
 - **Errors** are always flat: `{"error": "<code>", "message": "<text>"}`.
 - **Config** (env vars, defaults): `PORT=3000`, `CRM_BASE_URL=http://127.0.0.1:4002`,
   `CRM_TIMEOUT_SECONDS=2.0`, `API_TOKEN=superday-demo-token`, `CACHE_TTL_SECONDS=30`.
