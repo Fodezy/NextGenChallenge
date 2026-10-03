@@ -14,3 +14,6 @@ each task.
 [plan] BRIEF.md filled: scope + owners, FastAPI/httpx(async)/pytest architecture, API contract §7, rules R1–R9, assumptions A1–A7 (to confirm)
 [plan] Stack changed: Flask (not FastAPI) + Pydantic response models + Ruff; CRM call now sync httpx 2 s timeout on threaded server (async gives Flask no benefit). BRIEF §6 updated
 [plan] Back to FastAPI (Flask dropped): FastAPI + async httpx + Pydantic + pytest + Ruff. BRIEF §6 updated
+[plan] Architecture diagrams for Tasks 1–3 (overview, CRM outcome flow, holdings 2-pass calc, history range windows): https://claude.ai/artifact/AvG2oPk61AuAuGyWCN3KdW
+[plan] ARCHITECTURE.md added: Mermaid versions of the Tasks 1–3 diagrams, range table, responses per endpoint, open points
+[plan] Moved ARCHITECTURE.md → architecture/ARCHITECTURE.md; future architecture decisions go in architecture/
