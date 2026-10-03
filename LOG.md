@@ -43,3 +43,4 @@ each task.
 [me] Task 9 CRM cache live: 30 s TTL, stale fallback on error/timeout/garbage, cold 503, 404 evicts; live check vs mock /__stats (2 calls → +1, stale after expiry, P-SINGLE cold 503, refresh after recovery); 94 tests green
 [A] Task 2: added holdings router and camelCase HoldingResponse, registered endpoint; Decimal calculations reused, money rounded at response boundary; drafted 6 HTTP tests for contract, empty/zero cases, unknown ID and fresh recomputation.
 [A] Task 2 verified: 107 completed backend tests passed (unfinished Task 4 draft excluded); Ruff lint and formatting clean; endpoint includes correct numeric fields, empty/closed/zero-close cases, 404 and fresh recalculation.
+[me] docs/personas.md added: advisor, client, developer demo walkthroughs
