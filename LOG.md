@@ -34,3 +34,7 @@ each task.
 [plan] Wireframe rough pass (Claude Design, 6 artboards: happy path P-9001, stale, CRM down, loading, empty, P-9002 null day %): https://claude.ai/artifact/MsRKZyrShvDELK1n3KRuvW
 [plan] Wireframe source committed to design/wireframe/ (README: artboards, agreed answers, 6 open review points) so the team can design from it
 [B] Pulled main (Task 1) into task-3 branch: Task 3 assumptions renumbered A8–A10 → A9–A11 (main kept A8 for CRM mapping); 77 tests green
+[A] Task 4 step 1: inspected auth placeholder and app registration; no authentication currently registered.
+[A] Task 4 step 2: drafted 12 R7 tests for missing/malformed/wrong credentials, configured valid token, open health, and rejection before CRM/history access; awaiting test approval, middleware unchanged.
+[A] Created holdings_calc.py function scaffold and 7 R3/R4 tests: AAPL/BND values, zero position/total, zero previous close, empty list, exact money and input preservation; implementation awaits test approval.
+[A] Implemented calculate_holdings with Decimal two-pass values/weights; zero quantity fields zero, zero previous close percent null, empty/zero-total handled, inputs preserved, no early rounding; 7 approved tests passed and Ruff clean.

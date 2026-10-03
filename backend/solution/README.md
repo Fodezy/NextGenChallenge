@@ -121,3 +121,15 @@ If setting up another checkout, copy the blank template first:
 macOS / Linux: `cp .env.example .env`
 
 Windows (PowerShell): `Copy-Item .env.example .env`
+
+## Holdings calculation service
+
+`app/services/holdings_calc.py` exposes `calculate_holdings(rows)` for raw seed holdings.
+It returns copied rows with `marketValue`, `weightPercent`, `unrealizedGainLoss`,
+`dayChangeAmount`, and `dayChangePercent`. Values use Decimal arithmetic and percentages
+are fractions. Money remains unrounded until the API response is built.
+Closed positions have zero calculated fields; zero previous close produces an unknown
+day percentage for an open position. Empty input returns an empty list.
+This service is not yet connected to a holdings endpoint.
+
+Verify on macOS / Linux or Windows: `python -m pytest tests/test_holdings_calc.py`.
