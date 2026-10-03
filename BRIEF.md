@@ -43,36 +43,47 @@ P-9001 (ZERO row all zeros) · history `range=YTD`, then `range=1Y` on P-9002 (o
 allocation P-SINGLE (`percent: 1.0`) · `pytest` all green.
 
 ## 6. Stack and architecture
-Python 3.14 · **FastAPI** + uvicorn · **httpx** (async, CRM only) · **Pydantic** (camelCase aliases)
-· **pytest** + `TestClient` · data in memory from `seed.json`; stdlib **sqlite3** only when needed
-(Task 10) · `venv` + `requirements.txt` · service on **:3000**, mock CRM on **:4002**.
+Python 3.14 · **FastAPI** + uvicorn · **httpx** (async, CRM only) · **Pydantic** v2 for request and
+response models (camelCase aliases) · **pytest** + FastAPI `TestClient` · **Ruff** (lint + format,
+dev only) · data in memory from `seed.json`; stdlib **sqlite3** only when needed (Task 10) · `venv`
++ `requirements.txt` · service on **:3000**, mock CRM on **:4002**.
 
 ```
 client ──Bearer token──▶ FastAPI :3000 (backend/solution/)
   auth (all routes but /health) ─▶ routers/ (thin) ─▶ services/ (pure, tested) ─▶ data/ (seed.json)
-                                                      crm_client ──httpx, 2 s timeout──▶ mock CRM :4002
+                                                      crm_client ──async httpx, 2 s timeout──▶ mock CRM :4002
 ```
 
 ```
 backend/solution/
   app/
-    main.py        app, error handlers, route registration (only shared file: one line per router)
-    auth.py        Bearer check → 401 { error, message }                        [A]
-    errors.py      HttpError + handlers; FastAPI 422/{detail} → our 400/shape     [skeleton]
+    main.py        app, error handlers, router registration
+                   (only shared file: one line per router)                       [skeleton]
+    auth.py        Bearer check → 401 { error, message }                         [A]
+    errors.py      ApiError + handlers: ApiError, 422 validation, 404/405 and crashes → our shape [skeleton]
+    schemas.py     Pydantic response models (camelCase alias); each owner adds theirs
     routers/       portfolios.py [me] · holdings.py [A] · history.py, allocation.py [B]
     services/      crm_client.py, crm_mapper.py, cache.py [me] · holdings_calc.py [A]
                    history_filter.py, allocation.py [B]
     data/          repository.py: loads seed.json + performance-history.json     [skeleton]
   tests/           test_<module>.py next to each owner's work
-  requirements.txt
+  requirements.txt       fastapi, uvicorn, httpx, pydantic
+  requirements-dev.txt   pytest, ruff
+  pyproject.toml         ruff settings (line length, rules) so all three format the same
 ```
 
 **Rules of the architecture**
 - `GET /portfolios/:id` reads the **CRM**; every other endpoint reads the **local seed data**.
 - Routes do no maths: they parse input, call a service, return JSON. Calculations are pure functions.
-- The CRM call is **async** (`httpx.AsyncClient(timeout=2.0)`), no retries; the cache is the safety net.
-- Auth is our own check (not `HTTPBearer`, which may return 403): only `Authorization: Bearer <token>`;
-  token from env `API_TOKEN`, default `superday-demo-token`.
+- The CRM call is **async** (`httpx.AsyncClient(timeout=2.0)`), no retries; the cache is the safety
+  net. A slow CRM never blocks other requests.
+- Every error has our flat shape, never FastAPI's `{"detail": ...}`: handlers for `ApiError`,
+  `RequestValidationError` (422 → 400), `HTTPException` (404/405) and `Exception` (500, logged, no
+  stack trace in the body).
+- Routes declare `response_model=` with `by_alias` camelCase output, so `/docs` shows the contract.
+- Auth is our own check (not `HTTPBearer`, which may return 403): only `Authorization: Bearer <token>`
+  passes; token from env `API_TOKEN`, default `superday-demo-token`. Skips `/health`.
+- `ruff check` and `ruff format` before every merge.
 - Git: one branch each, small merges to `main`, pull before each prompt, one LOG.md line per step.
 
 ## 7. Data and API contract

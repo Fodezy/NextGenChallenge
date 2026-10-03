@@ -12,3 +12,5 @@ each task.
 [plan] Error shape everywhere: flat { error: "<code>", message } (Task 4's schema), not the kit's nested one
 [plan] Stack: Python backend, TypeScript frontend, SQLite only when needed (in-memory seed data first)
 [plan] BRIEF.md filled: scope + owners, FastAPI/httpx(async)/pytest architecture, API contract §7, rules R1–R9, assumptions A1–A7 (to confirm)
+[plan] Stack changed: Flask (not FastAPI) + Pydantic response models + Ruff; CRM call now sync httpx 2 s timeout on threaded server (async gives Flask no benefit). BRIEF §6 updated
+[plan] Back to FastAPI (Flask dropped): FastAPI + async httpx + Pydantic + pytest + Ruff. BRIEF §6 updated
