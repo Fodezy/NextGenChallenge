@@ -52,3 +52,4 @@ each task.
 [me] UI holdings switched to the real API (Task 2): live /holdings for P-9001, P-9002, P-EMPTY, P-SINGLE passes the UI contract check; 404 for unknown id. Allocation still on mock until Task 5
 [me] UI allocation switched to the real API (Task 5); mocks.ts and the mock switch removed: every dashboard section now reads the live backend. 16 web tests green, build OK
 [plan] Task 4 (auth) left out by team decision, out of time; README states it as unfinished work with the planned design
+[me] Final solution README (run from a fresh clone, tests, status per task, endpoints, assumptions, unfinished work) and DEMO.md (4-minute script, 3 speakers) in backend/solution/
