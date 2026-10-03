@@ -1,23 +1,119 @@
 {
   "v": 3,
-  "createdOnFiles": { "v": 1, "at": "2026-10-03T17:40:00Z" },
+  "createdOnFiles": {
+    "v": 1,
+    "at": "2026-10-03T17:40:00Z"
+  },
   "title": "Portfolio Dashboard Wireframe",
-  "launch": { "view": "canvas" },
+  "launch": {
+    "view": "canvas"
+  },
   "pages": [],
   "boards": {
-    "Main.dc.html": { "x": 0, "y": 0, "w": 1280, "h": 1180, "title": "1 · Happy path · P-9001", "expand": "fill" },
-    "Stale.dc.html": { "x": 1360, "y": 0, "w": 1280, "h": 400, "title": "2 · Stale (Task 9): CRM down, cached copy" },
-    "CrmDown.dc.html": { "x": 1360, "y": 520, "w": 1280, "h": 400, "title": "3 · CRM down, nothing cached (503)" },
-    "Loading.dc.html": { "x": 1360, "y": 1040, "w": 1280, "h": 640, "title": "4 · Loading" },
-    "Empty.dc.html": { "x": 2720, "y": 0, "w": 1280, "h": 900, "title": "5 · Empty · P-EMPTY" },
-    "NewSecurity.dc.html": { "x": 2720, "y": 1020, "w": 1280, "h": 940, "title": "6 · Zero previous close + short history · P-9002" }
+    "Main.dc.html": {
+      "x": 0,
+      "y": 0,
+      "w": 1280,
+      "h": 1280,
+      "title": "1 · Happy path · P-9001",
+      "expand": "fill"
+    },
+    "Stale.dc.html": {
+      "x": 1360,
+      "y": 0,
+      "w": 1280,
+      "h": 460,
+      "title": "2 · Stale (Task 9): CRM down, cached copy"
+    },
+    "CrmDown.dc.html": {
+      "x": 1360,
+      "y": 520,
+      "w": 1280,
+      "h": 420,
+      "title": "3 · CRM down, nothing cached (503)"
+    },
+    "Loading.dc.html": {
+      "x": 1360,
+      "y": 1040,
+      "w": 1280,
+      "h": 680,
+      "title": "4 · Loading"
+    },
+    "Empty.dc.html": {
+      "x": 2720,
+      "y": 0,
+      "w": 1280,
+      "h": 960,
+      "title": "5 · Empty · P-EMPTY"
+    },
+    "NewSecurity.dc.html": {
+      "x": 2720,
+      "y": 1020,
+      "w": 1280,
+      "h": 1020,
+      "title": "6 · Zero previous close + short history · P-9002"
+    },
+    "AllocationPie.dc.html": {
+      "x": 4080,
+      "y": 0,
+      "w": 1240,
+      "h": 520,
+      "title": "7 · Allocation, Pie view · P-9001 and P-SINGLE"
+    },
+    "HoldingsFiltered.dc.html": {
+      "x": 4080,
+      "y": 620,
+      "w": 1280,
+      "h": 820,
+      "title": "8 · Holdings filtered: Equity + hide closed, and no match"
+    }
   },
-  "order": ["Main.dc.html", "Stale.dc.html", "CrmDown.dc.html", "Loading.dc.html", "Empty.dc.html", "NewSecurity.dc.html"],
+  "order": [
+    "Main.dc.html",
+    "Stale.dc.html",
+    "CrmDown.dc.html",
+    "Loading.dc.html",
+    "Empty.dc.html",
+    "NewSecurity.dc.html",
+    "AllocationPie.dc.html",
+    "HoldingsFiltered.dc.html"
+  ],
   "notes": {
-    "title": { "x": 0, "y": -300, "text": "Portfolio dashboard: Musts + Shoulds, every edge state", "kind": "title1", "maxW": 4000 },
-    "picker": { "x": 0, "y": 1240, "w": 360, "text": "Portfolio picker: hard-coded P-9001 / P-9002 / P-EMPTY for now. A real list needs GET /clients/:id/portfolios (Task 6, a Could).", "fill": "orange" },
-    "rows": { "x": 400, "y": 1240, "w": 360, "text": "Holding rows are not clickable: holding detail is Task 8 (Won't). CAD only: the CAD/USD switch is Task 7 (Could).", "fill": "gray" },
-    "sources": { "x": 800, "y": 1240, "w": 400, "text": "Data per section: header = GET /portfolios/:id (CRM, Task 1/9) · chart = /performance-history (Task 3) · allocation = /allocation (Task 5) · table = /holdings (Task 2). Header needs the CRM; the rest does not.", "fill": "teal" }
+    "title": {
+      "x": 0,
+      "y": -300,
+      "text": "Portfolio dashboard: Musts + Shoulds, every edge state",
+      "kind": "title1",
+      "maxW": 4000
+    },
+    "picker": {
+      "x": 0,
+      "y": 1340,
+      "w": 360,
+      "text": "Portfolio picker: hard-coded P-9001 / P-9002 / P-EMPTY for now. A real list needs GET /clients/:id/portfolios (Task 6, a Could).",
+      "fill": "orange"
+    },
+    "rows": {
+      "x": 400,
+      "y": 1340,
+      "w": 360,
+      "text": "Holding rows are not clickable: holding detail is Task 8 (Won't). CAD only: the CAD/USD switch is Task 7 (Could).",
+      "fill": "gray"
+    },
+    "sources": {
+      "x": 800,
+      "y": 1340,
+      "w": 400,
+      "text": "Data per section: header = GET /portfolios/:id (CRM, Task 1/9) · chart = /performance-history (Task 3) · allocation = /allocation (Task 5) · table = /holdings (Task 2). Header needs the CRM; the rest does not.",
+      "fill": "teal"
+    },
+    "kpis": {
+      "x": 1240,
+      "y": 1340,
+      "w": 400,
+      "fill": "orange",
+      "text": "Client name 'Jane Doe' needs clientName in GET /portfolios/:id (from the CRM's full_name): a Task 1 contract change, open point 3."
+    }
   },
   "designSystems": []
 }

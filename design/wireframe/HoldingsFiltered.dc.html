@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Holdings, filtered</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F5F7}
+a{color:#0F6E6E}a:hover{color:#0B5454}
+.num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.seg button{font:inherit;font-size:13px;padding:0 14px;min-height:36px;border:0;background:#FFFFFF;color:#14171C;cursor:pointer}
+.seg button+button{border-left:1px solid #D5D9DE}
+.seg button[aria-pressed="true"]{background:#0F6E6E;color:#FFFFFF}
+th{font-size:12px;font-weight:600;color:#5B6470;text-align:right;padding:10px 12px;border-bottom:1px solid #E3E6EA;white-space:nowrap}
+td{padding:12px;border-bottom:1px solid #EEF0F2;text-align:right;white-space:nowrap}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+@media (max-width:860px){.grid2{grid-template-columns:minmax(0,1fr) !important}}
+@media (max-width:860px){.kpis{grid-template-columns:minmax(0,1fr) !important}}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171C; background: #F4F5F7; min-height: 100%">
+<div style="max-width: 1200px; margin: 0 auto; padding: 24px 32px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px">
+<div class="cap" style="font-size: 12px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #5B6470">Equity only, closed positions hidden</div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Holdings</h2>
+<div style="display: flex; align-items: baseline; gap: 12px; font-size: 13px; color: #5B6470">Showing 1 of 3 positions<button type="button" style="font: inherit; font-size: 13px; font-weight: 600; color: #0F6E6E; background: none; border: 0; padding: 0; min-height: 24px; cursor: pointer">Clear filters</button></div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: stretch; gap: 10px">
+<div style="position: relative; width: 100%; max-width: 360px">
+<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="position: absolute; left: 12px; top: 12px; color: #5B6470"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"></circle><path d="M11 11 L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<input type="search" aria-label="Filter holdings by ticker or name" placeholder="Filter by ticker or name" style="font: inherit; font-size: 14px; width: 100%; box-sizing: border-box; min-height: 40px; padding: 0 12px 0 36px; border: 1px solid #D5D9DE; border-radius: 8px; background: #FFFFFF; color: #14171C">
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<div class="seg" role="group" aria-label="Asset class" style="display: inline-flex; border: 1px solid #D5D9DE; border-radius: 8px; overflow: hidden">
+<button type="button" aria-pressed="false">All</button>
+<button type="button" aria-pressed="true">Equity</button>
+<button type="button" aria-pressed="false">Fixed Income</button>
+</div>
+<label style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #14171C; min-height: 40px; cursor: pointer"><input type="checkbox" checked style="width: 16px; height: 16px; accent-color: #0F6E6E; margin: 0">Hide closed positions</label>
+</div>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; border-collapse: collapse; font-size: 14px">
+<thead><tr>
+<th>Security</th><th>Asset class</th><th>Quantity</th><th>Avg cost</th><th>Price</th>
+<th aria-sort="descending"><button type="button" style="font: inherit; font-weight: 600; color: #14171C; background: none; border: 0; padding: 0; min-height: 24px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px">Market value <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 L5 6.5 L8 3.5" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></button></th>
+<th>Weight</th><th>Unrealized gain/loss</th><th>Today</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><div style="font-weight: 600">AAPL</div><div style="font-size: 12px; color: #5B6470">Apple Inc.</div></td>
+<td>Equity</td><td class="num">120</td><td class="num">$200.00</td><td class="num">$227.50</td><td class="num" style="font-weight: 600">$27,300.00</td><td class="num">55.79%</td>
+<td class="num" style="color: #127A43">+$3,300.00</td><td class="num" style="color: #127A43">+$300.00 (+1.11%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div style="height: 12px"></div>
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #5B6470">Search with no match</div>
+<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Holdings</h2>
+<div style="display: flex; align-items: baseline; gap: 12px; font-size: 13px; color: #5B6470">Showing 0 of 3 positions<button type="button" style="font: inherit; font-size: 13px; font-weight: 600; color: #0F6E6E; background: none; border: 0; padding: 0; min-height: 24px; cursor: pointer">Clear filters</button></div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: stretch; gap: 10px">
+<div style="position: relative; width: 100%; max-width: 360px">
+<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="position: absolute; left: 12px; top: 12px; color: #5B6470"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"></circle><path d="M11 11 L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<input type="search" aria-label="Filter holdings by ticker or name" placeholder="Filter by ticker or name" value="TSLA" style="font: inherit; font-size: 14px; width: 100%; box-sizing: border-box; min-height: 40px; padding: 0 12px 0 36px; border: 1px solid #D5D9DE; border-radius: 8px; background: #FFFFFF; color: #14171C">
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<div class="seg" role="group" aria-label="Asset class" style="display: inline-flex; border: 1px solid #D5D9DE; border-radius: 8px; overflow: hidden">
+<button type="button" aria-pressed="true">All</button>
+<button type="button" aria-pressed="false">Equity</button>
+<button type="button" aria-pressed="false">Fixed Income</button>
+</div>
+<label style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #14171C; min-height: 40px; cursor: pointer"><input type="checkbox" style="width: 16px; height: 16px; accent-color: #0F6E6E; margin: 0">Hide closed positions</label>
+</div>
+</div>
+<div style="border: 1px dashed #D5D9DE; border-radius: 8px; padding: 32px 16px; display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center">
+<div style="font-size: 15px; font-weight: 600">No holdings match "TSLA"</div>
+<div style="font-size: 13px; color: #5B6470">Search looks at ticker and name, within the selected asset class.</div>
+<button type="button" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 40px; padding: 0 16px; margin-top: 4px; border: 1px solid #D5D9DE; border-radius: 8px; background: #FFFFFF; color: #14171C; cursor: pointer">Clear filters</button>
+</div>
+</div>
+<div style="font-size: 13px; color: #5B6470">Filters run in the browser on the rows already loaded from GET /holdings; weights stay relative to the whole portfolio, not the filtered rows.</div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":820}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

@@ -20,6 +20,7 @@ th{font-size:12px;font-weight:600;color:#5B6470;text-align:right;padding:10px 12
 td{padding:12px;border-bottom:1px solid #EEF0F2;text-align:right;white-space:nowrap}
 th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
 @media (max-width:860px){.grid2{grid-template-columns:minmax(0,1fr) !important}}
+@media (max-width:860px){.kpis{grid-template-columns:minmax(0,1fr) !important}}
 </style>
 </helmet>
 <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171C; background: #F4F5F7; min-height: 100%">
@@ -28,8 +29,10 @@ th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
 <div style="display: flex; align-items: center; gap: 10px">
 <div style="width: 10px; height: 10px; border-radius: 50%; background: #0F6E6E"></div>
-<div style="font-size: 18px; font-weight: 600">Portfolio dashboard</div>
-<div style="font-size: 13px; color: #5B6470">Client abc123</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 13px; font-weight: 500; color: #5B6470">Portfolio dashboard</div>
+<div style="display: flex; align-items: baseline; gap: 10px"><div style="font-size: 28px; font-weight: 600; letter-spacing: -0.4px; line-height: 1.15">Jane Doe</div><div style="font-size: 13px; color: #5B6470">Client abc123</div></div>
+</div>
 </div>
 <div style="display: flex; align-items: center; gap: 8px">
 <label for="pf" style="font-size: 13px; color: #5B6470">Portfolio</label>
@@ -41,20 +44,23 @@ th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
 </div>
 </div>
 
-<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-direction: column; gap: 10px">
 <div style="font-size: 13px; color: #5B6470">Taxable Brokerage · P-9001 · CAD</div>
-<div class="num" style="font-size: 40px; font-weight: 600; letter-spacing: -0.5px">$48,930.00</div>
+<div class="kpis" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<div style="background: #FFFFFF; border: 1.5px solid #CDD3DA; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #5B6470">Total value</div>
+<div class="num" style="font-size: 32px; font-weight: 600; letter-spacing: -0.5px">$48,930.00</div>
 <div style="font-size: 12px; color: #5B6470">As of Oct 3, 2026, 1:31 PM</div>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 12px; color: #5B6470">Today</div>
-<div class="num" style="font-size: 20px; font-weight: 600; color: #127A43">+$30.00 <span style="font-size: 14px">(+0.06%)</span></div>
+<div style="background: #FFFFFF; border: 1.5px solid #CDD3DA; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #5B6470">Today</div>
+<div class="num" style="font-size: 24px; font-weight: 600; color: #127A43">+$30.00 <span style="font-size: 14px">(+0.06%)</span></div>
+<div style="font-size: 12px; color: #5B6470">Change since yesterday's close</div>
 </div>
-<div style="display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 12px; color: #5B6470">Since inception</div>
-<div class="num" style="font-size: 20px; font-weight: 600; color: #127A43">+18.70%</div>
+<div style="background: #FFFFFF; border: 1.5px solid #CDD3DA; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #5B6470">Since inception</div>
+<div class="num" style="font-size: 24px; font-weight: 600; color: #127A43">+18.70%</div>
+<div style="font-size: 12px; color: #5B6470">Total return</div>
 </div>
 </div>
 </div>
@@ -88,7 +94,13 @@ th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
 </div>
 
 <div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
 <h2 style="margin: 0; font-size: 15px; font-weight: 600">Allocation</h2>
+<div class="seg" role="group" aria-label="Allocation view" style="display: inline-flex; border: 1px solid #D5D9DE; border-radius: 8px; overflow: hidden">
+<button type="button" aria-pressed="true">Bar</button>
+<button type="button" aria-pressed="false">Pie</button>
+</div>
+</div>
 <div style="display: flex; height: 14px; border-radius: 7px; overflow: hidden" role="img" aria-label="Equity 55.79%, Fixed Income 44.21%">
 <div style="width: 55.79%; background: #0F6E6E"></div>
 <div style="width: 44.21%; background: #9CC9C9"></div>
@@ -113,7 +125,21 @@ th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
 <div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 12px">
 <div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
 <h2 style="margin: 0; font-size: 15px; font-weight: 600">Holdings</h2>
-<div style="font-size: 13px; color: #5B6470">3 positions</div>
+<div style="font-size: 13px; color: #5B6470">Showing 3 of 3 positions</div>
+</div>
+<div style="display: flex; flex-direction: column; align-items: stretch; gap: 10px">
+<div style="position: relative; width: 100%; max-width: 360px">
+<svg width="16" height="16" viewBox="0 0 16 16" aria-hidden="true" style="position: absolute; left: 12px; top: 12px; color: #5B6470"><circle cx="7" cy="7" r="5" fill="none" stroke="currentColor" stroke-width="1.5"></circle><path d="M11 11 L14 14" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"></path></svg>
+<input type="search" aria-label="Filter holdings by ticker or name" placeholder="Filter by ticker or name" style="font: inherit; font-size: 14px; width: 100%; box-sizing: border-box; min-height: 40px; padding: 0 12px 0 36px; border: 1px solid #D5D9DE; border-radius: 8px; background: #FFFFFF; color: #14171C">
+</div>
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 12px">
+<div class="seg" role="group" aria-label="Asset class" style="display: inline-flex; border: 1px solid #D5D9DE; border-radius: 8px; overflow: hidden">
+<button type="button" aria-pressed="true">All</button>
+<button type="button" aria-pressed="false">Equity</button>
+<button type="button" aria-pressed="false">Fixed Income</button>
+</div>
+<label style="display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #14171C; min-height: 40px; cursor: pointer"><input type="checkbox" style="width: 16px; height: 16px; accent-color: #0F6E6E; margin: 0">Hide closed positions</label>
+</div>
 </div>
 <div style="overflow-x: auto">
 <table style="width: 100%; border-collapse: collapse; font-size: 14px">
@@ -146,7 +172,7 @@ th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
 </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1180}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1280}}'>
 class Component extends DCLogic {
 renderVals() {
 return {};

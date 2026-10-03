@@ -17,6 +17,7 @@ a{color:#0F6E6E}a:hover{color:#0B5454}
 .seg button+button{border-left:1px solid #D5D9DE}
 .seg button[aria-pressed="true"]{background:#0F6E6E;color:#FFFFFF}
 @media (max-width:860px){.grid2{grid-template-columns:minmax(0,1fr) !important}}
+@media (max-width:860px){.kpis{grid-template-columns:minmax(0,1fr) !important}}
 </style>
 </helmet>
 <div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171C; background: #F4F5F7; min-height: 100%">
@@ -25,8 +26,10 @@ a{color:#0F6E6E}a:hover{color:#0B5454}
 <div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
 <div style="display: flex; align-items: center; gap: 10px">
 <div style="width: 10px; height: 10px; border-radius: 50%; background: #0F6E6E"></div>
-<div style="font-size: 18px; font-weight: 600">Portfolio dashboard</div>
-<div style="font-size: 13px; color: #5B6470">Client abc123</div>
+<div style="display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 13px; font-weight: 500; color: #5B6470">Portfolio dashboard</div>
+<div style="display: flex; align-items: baseline; gap: 10px"><div style="font-size: 28px; font-weight: 600; letter-spacing: -0.4px; line-height: 1.15">Jane Doe</div><div style="font-size: 13px; color: #5B6470">Client abc123</div></div>
+</div>
 </div>
 <div style="display: flex; align-items: center; gap: 8px">
 <label for="pf" style="font-size: 13px; color: #5B6470">Portfolio</label>
@@ -36,20 +39,23 @@ a{color:#0F6E6E}a:hover{color:#0B5454}
 </div>
 </div>
 
-<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
-<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="display: flex; flex-direction: column; gap: 10px">
 <div style="font-size: 13px; color: #5B6470">Empty Account · P-EMPTY · CAD</div>
-<div class="num" style="font-size: 40px; font-weight: 600; letter-spacing: -0.5px">$0.00</div>
+<div class="kpis" style="display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px">
+<div style="background: #FFFFFF; border: 1.5px solid #CDD3DA; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #5B6470">Total value</div>
+<div class="num" style="font-size: 32px; font-weight: 600; letter-spacing: -0.5px">$0.00</div>
 <div style="font-size: 12px; color: #5B6470">As of Oct 3, 2026, 1:31 PM</div>
 </div>
-<div style="display: flex; flex-wrap: wrap; gap: 40px">
-<div style="display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 12px; color: #5B6470">Today</div>
-<div class="num" style="font-size: 20px; font-weight: 600; color: #5B6470">$0.00 <span style="font-size: 14px">(0.00%)</span></div>
+<div style="background: #FFFFFF; border: 1.5px solid #CDD3DA; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #5B6470">Today</div>
+<div class="num" style="font-size: 24px; font-weight: 600; color: #5B6470">$0.00 <span style="font-size: 14px">(0.00%)</span></div>
+<div style="font-size: 12px; color: #5B6470">Change since yesterday's close</div>
 </div>
-<div style="display: flex; flex-direction: column; gap: 4px">
-<div style="font-size: 12px; color: #5B6470">Since inception</div>
-<div class="num" style="font-size: 20px; font-weight: 600; color: #5B6470">0.00%</div>
+<div style="background: #FFFFFF; border: 1.5px solid #CDD3DA; border-radius: 10px; padding: 16px 20px; display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 12px; font-weight: 600; letter-spacing: 0.4px; text-transform: uppercase; color: #5B6470">Since inception</div>
+<div class="num" style="font-size: 24px; font-weight: 600; color: #5B6470">0.00%</div>
+<div style="font-size: 12px; color: #5B6470">Total return</div>
 </div>
 </div>
 </div>
@@ -88,7 +94,7 @@ a{color:#0F6E6E}a:hover{color:#0B5454}
 </div>
 </div>
 </x-dc>
-<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":900}}'>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":960}}'>
 class Component extends DCLogic {
 renderVals() {
 return {};

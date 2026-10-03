@@ -26,3 +26,5 @@ each task.
 [plan] Wireframe rough pass (Claude Design, 6 artboards: happy path P-9001, stale, CRM down, loading, empty, P-9002 null day %): https://claude.ai/artifact/MsRKZyrShvDELK1n3KRuvW
 [plan] Wireframe source committed to design/wireframe/ (README: artboards, agreed answers, 6 open review points) so the team can design from it
 [B] Pulled main (Task 1) into task-3 branch: Task 3 assumptions renumbered A8–A10 → A9–A11 (main kept A8 for CRM mapping); 77 tests green
+[B] Wireframe review changes on design/wireframe-kpi-allocation-filter: client name larger than title, bordered KPI tiles, allocation Bar/Pie toggle (+ artboard 7), holdings filter bar (+ artboard 8: filtered, no match); needs clientName in /portfolios/:id (open point 3)
+[B] Wireframe v2 canvas (review changes, 8 artboards): https://claude.ai/artifact/DoNXXJ4aLxynedM1N716Lu
