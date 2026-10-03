@@ -1,4 +1,18 @@
-// Tiny API client. All calls go through the Vite dev proxy (/api -> http://localhost:3000).
+// API client. All calls go through the Vite dev proxy (/api -> http://127.0.0.1:3000).
+// One function per BRIEF.md §7 endpoint; screens call only these, never fetch directly.
+import type { ZodType } from 'zod';
+import {
+  AllocationSchema,
+  HistorySchema,
+  HoldingsSchema,
+  PortfolioSchema,
+  type AllocationEntry,
+  type HistoryPoint,
+  type Holding,
+  type Portfolio,
+  type Range,
+} from './contract';
+import { mockAllocation, mockHoldings } from './mocks';
 
 export const API_BASE = '/api';
 export const DEFAULT_TOKEN = 'superday-demo-token';
@@ -46,4 +60,59 @@ export async function get<T>(path: string, init?: { signal?: AbortSignal }): Pro
     );
   }
   return body as T;
+}
+
+/** Where each not-yet-built endpoint's data comes from. Flip to 'api' when the backend ships it. */
+export const SOURCES = { holdings: 'mock', allocation: 'mock' } as const satisfies Record<
+  string,
+  'mock' | 'api'
+>;
+
+/** Checks a response against the contract; a mismatch names the field (join-up debugging). */
+export function checkContract<T>(path: string, schema: ZodType<T>, body: unknown): T {
+  const parsed = schema.safeParse(body);
+  if (parsed.success) return parsed.data;
+  const issue = parsed.error.issues[0];
+  const where = issue?.path.length ? issue.path.join('.') : '(root)';
+  throw new ApiError(0, 'contract_mismatch', `${path}: ${where} ${issue?.message ?? 'invalid'}`);
+}
+
+async function fetchChecked<T>(path: string, schema: ZodType<T>, signal?: AbortSignal): Promise<T> {
+  return checkContract(path, schema, await get<unknown>(path, { signal }));
+}
+
+async function fromMock<T>(
+  path: string,
+  schema: ZodType<T>,
+  data: unknown,
+  portfolioId: string,
+): Promise<T> {
+  await new Promise((resolve) => setTimeout(resolve, 150));
+  if (data === undefined) throw new ApiError(404, 'not_found', `Portfolio ${portfolioId} not found`);
+  return checkContract(path, schema, data);
+}
+
+const portfolioPath = (id: string) => `/portfolios/${encodeURIComponent(id)}`;
+
+export function getPortfolio(id: string, signal?: AbortSignal): Promise<Portfolio> {
+  return fetchChecked(portfolioPath(id), PortfolioSchema, signal);
+}
+
+export function getHistory(id: string, range: Range, signal?: AbortSignal): Promise<HistoryPoint[]> {
+  const path = `${portfolioPath(id)}/performance-history?range=${range}`;
+  return fetchChecked(path, HistorySchema, signal);
+}
+
+export function getHoldings(id: string, signal?: AbortSignal): Promise<Holding[]> {
+  const path = `${portfolioPath(id)}/holdings`;
+  if (SOURCES.holdings === 'mock') return fromMock(path, HoldingsSchema, mockHoldings(id), id);
+  return fetchChecked(path, HoldingsSchema, signal);
+}
+
+export function getAllocation(id: string, signal?: AbortSignal): Promise<AllocationEntry[]> {
+  const path = `${portfolioPath(id)}/allocation`;
+  if (SOURCES.allocation === 'mock') {
+    return fromMock(path, AllocationSchema, mockAllocation(id), id);
+  }
+  return fetchChecked(path, AllocationSchema, signal);
 }
