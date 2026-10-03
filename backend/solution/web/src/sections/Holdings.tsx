@@ -1,4 +1,4 @@
-// Holdings table from GET /portfolios/:id/holdings (Task 2; mock until it ships).
+// Holdings table from GET /portfolios/:id/holdings (Task 2).
 // Filters are client-side on the loaded rows; weights stay relative to the whole portfolio.
 import { useMemo, useState } from 'react';
 import { getHoldings } from '../api';

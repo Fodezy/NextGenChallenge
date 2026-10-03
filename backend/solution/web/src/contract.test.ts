@@ -1,30 +1,27 @@
 import { describe, expect, it } from 'vitest';
 import { checkContract } from './api';
 import { AllocationSchema, HoldingsSchema, PortfolioSchema } from './contract';
-import { mockAllocation, mockHoldings } from './mocks';
 
-describe('mocks match the contract and the BRIEF.md examples', () => {
-  it('P-9001 holdings follow R3/R4', () => {
-    const rows = checkContract('mock', HoldingsSchema, mockHoldings('P-9001'));
-    const aapl = rows.find((h) => h.ticker === 'AAPL');
-    expect(aapl).toMatchObject({ marketValue: 27300, unrealizedGainLoss: 3300, dayChangeAmount: 300 });
-    expect(aapl?.weightPercent).toBeCloseTo(0.55794, 5);
-    expect(rows.find((h) => h.ticker === 'ZERO')).toMatchObject({
-      marketValue: 0,
-      weightPercent: 0,
-      unrealizedGainLoss: 0,
-      dayChangeAmount: 0,
-    });
+// Samples copied from the live API (P-9001 and P-9002), so the schemas stay in step with it.
+const HOLDINGS_P9002 = [
+  {
+    ticker: 'NEW', name: 'New Security', assetClass: 'Equity', quantity: 10, costBasisPerShare: 40,
+    price: 50, previousClosePrice: 0, marketValue: 500, weightPercent: 1, unrealizedGainLoss: 100,
+    dayChangeAmount: 500, dayChangePercent: null,
+  },
+];
+const ALLOCATION_P9001 = [
+  { assetClass: 'Equity', value: 27300, percent: 0.5579399141630901 },
+  { assetClass: 'Fixed Income', value: 21630, percent: 0.44206008583690987 },
+];
+
+describe('contract schemas accept live responses', () => {
+  it('holdings with a null day change % (zero previous close, A2)', () => {
+    expect(checkContract('/holdings', HoldingsSchema, HOLDINGS_P9002)[0]?.dayChangePercent).toBeNull();
   });
-  it('zero previous close gives a null day change % (A2)', () => {
-    expect(mockHoldings('P-9002')?.[0]?.dayChangePercent).toBeNull();
-  });
-  it('allocation follows R6; empty and unknown portfolios behave', () => {
-    const p9001 = checkContract('mock', AllocationSchema, mockAllocation('P-9001'));
-    expect(p9001.map((a) => a.assetClass)).toEqual(['Equity', 'Fixed Income']);
-    expect(mockAllocation('P-SINGLE')).toEqual([{ assetClass: 'Equity', value: 2275, percent: 1 }]);
-    expect(mockAllocation('P-EMPTY')).toEqual([]);
-    expect(mockHoldings('P-NOPE')).toBeUndefined();
+  it('allocation, and an empty portfolio', () => {
+    expect(checkContract('/allocation', AllocationSchema, ALLOCATION_P9001)).toHaveLength(2);
+    expect(checkContract('/allocation', AllocationSchema, [])).toEqual([]);
   });
 });
 
@@ -34,5 +31,9 @@ describe('checkContract', () => {
     expect(() => checkContract('/portfolios/P-9001', PortfolioSchema, bad)).toThrow(
       /\/portfolios\/P-9001: clientId/,
     );
+  });
+  it('rejects a percent sent as a string', () => {
+    const bad = [{ assetClass: 'Equity', value: 500, percent: '100%' }];
+    expect(() => checkContract('/allocation', AllocationSchema, bad)).toThrow(/0\.percent/);
   });
 });
