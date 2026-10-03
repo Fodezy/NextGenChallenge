@@ -133,9 +133,12 @@ datetimes with `Z`) · every error is flat **`{ "error": "<code>", "message": "<
 - A6: history ranges count back from today; the history file is regenerated so YTD uses this year.
 - A7: on a successful CRM call after a stale period, the cache is replaced and `stale` goes back to
   `false`; `cachedAt` is the time of the CRM fetch.
-- A8: `range` is an exact, case-sensitive match (`ytd`, empty, `2Y` → 400 `invalid_range`); range is
+- A8: CRM mapping is a field → candidate-paths table (first match wins); a new legacy name or nesting
+  is one line. Numeric strings are parsed, unreadable values → `null`, currency is upper-cased.
+  Percentages are taken as decimals as the spec says; units can't be detected, so no guessing.
+- A9: `range` is an exact, case-sensitive match (`ytd`, empty, `2Y` → 400 `invalid_range`); range is
   checked before the portfolio lookup, so a bad range is 400 even for an unknown id.
-- A9: 1M and 1Y step back by calendar month/year and clamp to a shorter month's last day
+- A10: 1M and 1Y step back by calendar month/year and clamp to a shorter month's last day
   (31 Mar − 1M = 28 Feb; 29 Feb 2028 − 1Y = 28 Feb 2027). "Today" is the UTC date.
-- A10: history that exists but has no points inside the window returns 200 `[]` (e.g. a stale
+- A11: history that exists but has no points inside the window returns 200 `[]` (e.g. a stale
   history file with `range=1D`); nothing is padded and no older point is substituted.

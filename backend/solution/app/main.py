@@ -11,8 +11,9 @@ from fastapi import FastAPI
 
 from app.data import repository
 from app.errors import register_error_handlers
-from app.routers import history
+from app.routers import history, portfolios
 from app.schemas import ErrorResponse, HealthResponse
+from app.services import crm_client
 
 logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(message)s")
 
@@ -21,6 +22,7 @@ logging.basicConfig(level=logging.INFO, format="%(levelname)s %(name)s: %(messag
 async def lifespan(_: FastAPI) -> AsyncIterator[None]:
     repository.load()
     yield
+    await crm_client.close_crm_http()
 
 
 def create_app() -> FastAPI:
@@ -36,7 +38,7 @@ def create_app() -> FastAPI:
         return HealthResponse(status="ok")
 
     # Routers: one line each (import at the top), e.g.
-    # app.include_router(portfolios.router)
+    app.include_router(portfolios.router)
     # app.include_router(holdings.router)
     app.include_router(history.router)
     # app.include_router(allocation.router)
