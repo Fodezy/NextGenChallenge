@@ -66,11 +66,8 @@ function ClientHeading({ state }: { state: AsyncState<Portfolio> }) {
         {state.status === 'loading' ? (
           <Skeleton className="h-8 w-48" />
         ) : (
-          <h1 className="flex items-baseline gap-2.5">
-            <span className="text-[28px] leading-[1.15] font-semibold tracking-[-0.4px]">
-              {p?.clientName ?? 'Client'}
-            </span>
-            {p?.clientId && <span className="text-[13px] font-normal text-muted">Client {p.clientId}</span>}
+          <h1 className="text-[28px] leading-[1.15] font-semibold tracking-[-0.4px]">
+            {p?.clientName ?? 'Client'}
           </h1>
         )}
       </div>

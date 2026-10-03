@@ -53,3 +53,4 @@ each task.
 [me] UI allocation switched to the real API (Task 5); mocks.ts and the mock switch removed: every dashboard section now reads the live backend. 16 web tests green, build OK
 [plan] Task 4 (auth) left out by team decision, out of time; README states it as unfinished work with the planned design
 [me] Final solution README (run from a fresh clone, tests, status per task, endpoints, assumptions, unfinished work) and DEMO.md (4-minute script, 3 speakers) in backend/solution/
+[me] UI: removed "Client abc123" from the header (client name only)
