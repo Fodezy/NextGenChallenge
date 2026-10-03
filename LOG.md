@@ -1,4 +1,4 @@
-﻿# LOG
+# LOG
 
 Shared memory between the two Claude sessions (and the two of us). **Append-only, one line per step,
 newest at the bottom.** Prefix with who: `[api]`, `[web]` or `[plan]`. Read the last 10 lines before
@@ -14,5 +14,8 @@ each task.
 [plan] BRIEF.md filled: scope + owners, FastAPI/httpx(async)/pytest architecture, API contract §7, rules R1–R9, assumptions A1–A7 (to confirm)
 [plan] Stack changed: Flask (not FastAPI) + Pydantic response models + Ruff; CRM call now sync httpx 2 s timeout on threaded server (async gives Flask no benefit). BRIEF §6 updated
 [plan] Back to FastAPI (Flask dropped): FastAPI + async httpx + Pydantic + pytest + Ruff. BRIEF §6 updated
+[plan] Architecture diagrams for Tasks 1–3 (overview, CRM outcome flow, holdings 2-pass calc, history range windows): https://claude.ai/artifact/AvG2oPk61AuAuGyWCN3KdW
+[plan] ARCHITECTURE.md added: Mermaid versions of the Tasks 1–3 diagrams, range table, responses per endpoint, open points
+[plan] Moved ARCHITECTURE.md → architecture/ARCHITECTURE.md; future architecture decisions go in architecture/
 [api] Skeleton up in backend/solution: FastAPI app, flat error handlers, seed repository, /health, 7 tests green, ruff clean; web/ shell (Vite+React+TS+Tailwind, /api proxy to :3000, 3 vitest green)
 [plan] CLAUDE.md updated for the 3-person Python/FastAPI build: owners, shared files, flat errors, decimal CAD, Ruff + pytest before merge
