@@ -47,6 +47,9 @@ Python 3.14 · **FastAPI** + uvicorn · **httpx** (async, CRM only) · **Pydanti
 response models (camelCase aliases) · **pytest** + FastAPI `TestClient` · **Ruff** (lint + format,
 dev only) · data in memory from `seed.json`; stdlib **sqlite3** only when needed (Task 10) · `venv`
 + `requirements.txt` · service on **:3000**, mock CRM on **:4002**.
+**Frontend (TSX):** `backend/solution/web/`: Vite + React + TypeScript strict + Tailwind · Vitest ·
+npm · :5173, proxies `/api` → :3000 (prefix stripped). Scaffold only (a /health page); screens wait
+until the backend Shoulds are done.
 
 ```
 client ──Bearer token──▶ FastAPI :3000 (backend/solution/)

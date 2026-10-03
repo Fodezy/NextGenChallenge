@@ -1,18 +1,23 @@
-﻿# CLAUDE.md
+# CLAUDE.md
 
-A 2-hour pair build for a wealth-management platform. **Read BRIEF.md before every task**: it holds
-the scope, the API contract and the business rules. **Read the last 10 lines of LOG.md** too: what the
-other session changed.
+A three-person backend build for a wealth-management portfolio dashboard (Electric Mind Super Day,
+backend track). **Read BRIEF.md before every task**: it holds the scope and owners, the architecture,
+the API contract and the business rules. **Read the last 10 lines of LOG.md** too: what the other
+sessions changed.
 
 ## How we work
 - **Be brief.** Report in 3 lines at most: what changed · how to check it · what's next. No filler.
 - **Commit only with permission.** After a step, report, then ask "Commit?". Commit only after a yes.
-- **Log every step.** After each step, add one line to the end of LOG.md:
-  `[api] POST /decision live: 409 when already decided`. Never edit earlier lines.
-- **Stay in your folder.** The backend session works in `api/`, the frontend session in `web/`.
-  `shared/` is the contract: change it only after we agree. Update BRIEF.md §7, log it, and say so.
-- **Keep going.** Stop and ask (one line) only before: a screen, endpoint or table not in BRIEF.md,
-  a contract change, or work outside the current Must. A prompt that lists its own scope counts as
+  One branch per person, small merges to `main`, pull before each prompt.
+- **Log every step.** After each step, add one line to the end of LOG.md, prefixed with who:
+  `[me]`, `[A]`, `[B]` or `[plan]`, e.g. `[A] GET /portfolios/:id/holdings live: ZERO row all 0`.
+  Never edit earlier lines.
+- **Stay in your files.** All work is in `backend/solution/`. Each router and service has one owner
+  (BRIEF.md §6). Shared files: `app/main.py` (one `include_router` line each), `app/schemas.py`
+  (add your own models, don't change others'), `app/errors.py` and `app/data/repository.py` (change
+  only after we agree). A contract change: update BRIEF.md §7, log it, and say so.
+- **Keep going.** Stop and ask (one line) only before: an endpoint or table not in BRIEF.md, a
+  contract change, or work outside your current task. A prompt that lists its own scope counts as
   approval, **except at the stop points in Business rules and Screens below**.
 - **Fix setup problems** (imports, config, packages) silently.
 
@@ -24,8 +29,8 @@ Rules are in BRIEF.md §8.
 
 **Never change an approved test to make it pass.**
 
-## Screens: design first
-**Never write web/src code before the design is approved.**
+## Screens: design first (only once the backend Shoulds are done)
+**Never write web/src code beyond the scaffold before the design is approved.**
 1. **Questions.** Ask these, plus up to 3 of your own that fit this brief. **Give your recommended
    answer for each**, numbered, so we can reply "all yes" or "yes except 3: …". Then stop.
    1. Who uses this screen, and what's the one thing they must see or do?
@@ -49,16 +54,33 @@ No code changes. List findings with a severity; don't fix them. Fix only what br
 only after our OK. Everything else goes in README.md next steps.
 
 ## Code
-- TypeScript strict. npm.
-- **Money:** integer cents everywhere, rounded to cents when created; percentages unrounded until
-  display. One format helper: en-CA, CAD, "+" on gains, "−" on losses.
-- API errors are `{ error: { code, message } }`. Every screen has loading, empty and error states.
-  No buttons that do nothing.
-- **AI:** rules calculate, the AI explains, a human approves (marked "AI draft"). No names or emails
-  in prompts. With no API key, the feature shows "unavailable" and everything else works.
+- **Backend:** Python 3.14, FastAPI, Pydantic v2, async httpx (CRM only), pytest, Ruff. Type hints
+  everywhere. Routes are thin; calculations are pure functions in `app/services/`, unit tested
+  without HTTP.
+- **Frontend:** TypeScript strict, React, Tailwind, Vitest, npm (`backend/solution/web/`).
+- **Responses:** JSON camelCase via `CamelModel` subclasses in `app/schemas.py` and `response_model=`.
+- **Money:** decimal CAD, rounded to 2 dp only when the response is built; percentages are unrounded
+  decimals (0.0032 = 0.32%). Never invent a 0 for missing data: use `null` and document it.
+- **Errors:** raise `ApiError(status, code, message)`; every error is flat
+  `{ "error": "<code>", "message": "<text>" }`. Codes are listed in BRIEF.md §7.
+- **Before every merge:** `ruff format .`, `ruff check .`, `pytest` all clean.
+- Any choice the spec leaves open goes in BRIEF.md §9 and the README.
 
 ## Commands
 npm scripts work the same everywhere. Wherever a command differs (env vars, copying or deleting
 files), write it twice: **macOS / Linux (bash, zsh)** and **Windows (PowerShell)**. Same in README.md.
 
-_Filled in by the scaffold (PROMPTS.md prompt 2) or the codebase map._
+Backend: `backend/solution/` (FastAPI, Python 3.14). Web: `backend/solution/web/` (Vite, React, TS).
+Mock token: `superday-demo-token`. Ports: API 3000, mock CRM 4002, web 5173.
+
+- **Setup venv + install** (in `backend/solution/`):
+  - bash: `python3 -m venv .venv && source .venv/bin/activate && pip install -r requirements-dev.txt`
+  - PowerShell: `py -m venv .venv; .\.venv\Scripts\Activate.ps1; pip install -r requirements-dev.txt`
+- **Activate venv later:** bash `source .venv/bin/activate` · PowerShell `.\.venv\Scripts\Activate.ps1`
+- **Run API** (venv active, in `backend/solution/`): `uvicorn app.main:app --port 3000 --reload`
+- **Test:** `pytest` · **Lint/format:** `ruff format .` then `ruff check .` (venv active)
+- **Generate history** (repo root, needed for history endpoints): `node backend/fixtures/generate-history.mjs`
+- **Mock CRM** (repo root): `node backend/mock-crm.mjs`
+- **Web** (in `backend/solution/web/`): `npm install` · `npm run dev` · `npm test` ·
+  `npm run typecheck` · `npm run build`
+- **Web token override:** bash `cp .env.example .env.local` · PowerShell `Copy-Item .env.example .env.local`
