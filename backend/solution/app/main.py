@@ -11,7 +11,7 @@ from fastapi import FastAPI
 
 from app.data import repository
 from app.errors import register_error_handlers
-from app.routers import portfolios
+from app.routers import history, portfolios
 from app.schemas import ErrorResponse, HealthResponse
 from app.services import crm_client
 
@@ -40,7 +40,7 @@ def create_app() -> FastAPI:
     # Routers: one line each (import at the top), e.g.
     app.include_router(portfolios.router)
     # app.include_router(holdings.router)
-    # app.include_router(history.router)
+    app.include_router(history.router)
     # app.include_router(allocation.router)
 
     return app

@@ -4,6 +4,8 @@ Extend CamelModel: fields are snake_case in Python and camelCase in JSON. FastAP
 response_model output by alias, so `market_value` goes out as `marketValue`.
 """
 
+import datetime as dt
+
 from pydantic import BaseModel, ConfigDict
 from pydantic.alias_generators import to_camel
 
@@ -21,6 +23,13 @@ class ErrorResponse(BaseModel):
 
 class HealthResponse(BaseModel):
     status: str
+
+
+class HistoryPoint(CamelModel):
+    """One daily snapshot in GET /portfolios/{id}/performance-history (Task 3)."""
+
+    date: dt.date
+    market_value: float
 
 
 # Task 1 · GET /portfolios/{id} (owner: me). Values the CRM leaves out are None, never 0 (A3).
