@@ -20,3 +20,4 @@ each task.
 [api] Skeleton up in backend/solution: FastAPI app, flat error handlers, seed repository, /health, 7 tests green, ruff clean; web/ shell (Vite+React+TS+Tailwind, /api proxy to :3000, 3 vitest green)
 [plan] CLAUDE.md updated for the 3-person Python/FastAPI build: owners, shared files, flat errors, decimal CAD, Ruff + pytest before merge
 [plan] Root .gitignore: ignore generated backend/fixtures/performance-history.json
+[plan] .gitattributes: LOG.md merge=union, so parallel log lines merge without conflicts
