@@ -48,3 +48,4 @@ each task.
 [plan] Web UI plan: real API for header (Tasks 1/9) and chart (Task 3); holdings + allocation on contract-shaped mocks until Tasks 2/5 land, then switch per endpoint. Contract change first: clientName on GET /portfolios/:id
 [me] clientName added to GET /portfolios/:id (CRM full_name; BRIEF §7 updated); 95 backend tests green
 [me] Web UI built on web-ui: header + KPI tiles (stale banner, CRM-down card), performance chart (Recharts, range buttons), allocation (Bar/Pie), holdings (search, class filter, hide closed, sort). Real API for portfolio + history; holdings + allocation on contract mocks: flip SOURCES in web/src/api.ts when Tasks 2/5 land. 16 web tests green
+[me] UI holdings switched to the real API (Task 2): live /holdings for P-9001, P-9002, P-EMPTY, P-SINGLE passes the UI contract check; 404 for unknown id. Allocation still on mock until Task 5

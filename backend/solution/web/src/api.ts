@@ -63,7 +63,7 @@ export async function get<T>(path: string, init?: { signal?: AbortSignal }): Pro
 }
 
 /** Where each not-yet-built endpoint's data comes from. Flip to 'api' when the backend ships it. */
-export const SOURCES = { holdings: 'mock', allocation: 'mock' } as const satisfies Record<
+export const SOURCES = { holdings: 'api', allocation: 'mock' } as const satisfies Record<
   string,
   'mock' | 'api'
 >;

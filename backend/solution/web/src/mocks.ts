@@ -1,6 +1,7 @@
-// Stand-ins for endpoints not built yet: holdings (Task 2, partner A) and allocation (Task 5,
-// partner B). Values follow BRIEF.md rules R3, R4 and R6 applied to backend/fixtures/seed.json,
-// so switching to the real API should change nothing on screen. Delete when both are live.
+// Stand-in for allocation (Task 5, partner B) until it ships. Holdings (Task 2) is live; its mock
+// stays only because mockAllocation is built from it. Values follow BRIEF.md rules R3, R4 and R6
+// applied to backend/fixtures/seed.json, so switching to the real API should change nothing on
+// screen. Delete this file when allocation is live.
 import type { AllocationEntry, Holding } from './contract';
 
 type SeedHolding = Pick<
