@@ -135,6 +135,8 @@ It returns copied rows with `marketValue`, `weightPercent`, `unrealizedGainLoss`
 are fractions. Money remains unrounded until the API response is built.
 Closed positions have zero calculated fields; zero previous close produces an unknown
 day percentage for an open position. Empty input returns an empty list.
-This service is not yet connected to a holdings endpoint.
+`GET /portfolios/{id}/holdings` uses this service and returns camelCase numeric fields.
+Unknown IDs return a flat 404; known empty portfolios return `[]`. Money is rounded
+to two decimals at the response boundary; fractional percentages are not rounded.
 
 Verify on macOS / Linux or Windows: `python -m pytest tests/test_holdings_calc.py`.

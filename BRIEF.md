@@ -16,7 +16,7 @@ how that has changed, because the legacy CRM is slow, awkwardly shaped and fails
 ## 3. Scope
 **Must:**
 - [ ] Task 1 · `GET /portfolios/:id`: CRM metadata, mapped, with timeout and 404 (owner: **me**)
-- [ ] Task 2 · `GET /portfolios/:id/holdings`: calculated fields, unit tested (owner: **partner A**)
+- [x] Task 2 · `GET /portfolios/:id/holdings`: calculated fields, unit tested (owner: **partner A**)
 - [ ] Task 4 · Auth middleware on every route except `/health` (owner: **partner A**)
 
 **Should:**

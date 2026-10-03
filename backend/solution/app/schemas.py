@@ -48,3 +48,20 @@ class PortfolioMetadata(CamelModel):
 class PortfolioResponse(PortfolioMetadata):
     stale: bool
     cached_at: str
+
+
+class HoldingResponse(CamelModel):
+    """Task 2: position metadata and server-calculated valuation."""
+
+    ticker: str
+    name: str
+    asset_class: str
+    quantity: float
+    cost_basis_per_share: float
+    price: float
+    previous_close_price: float
+    market_value: float
+    weight_percent: float
+    unrealized_gain_loss: float
+    day_change_amount: float
+    day_change_percent: float | None
