@@ -1,0 +1,157 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Portfolio dashboard, P-9001</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F5F7}
+a{color:#0F6E6E}a:hover{color:#0B5454}
+.num{font-family:"IBM Plex Mono",ui-monospace,monospace;font-variant-numeric:tabular-nums}
+.seg button{font:inherit;font-size:13px;padding:0 14px;min-height:36px;border:0;background:#FFFFFF;color:#14171C;cursor:pointer}
+.seg button+button{border-left:1px solid #D5D9DE}
+.seg button[aria-pressed="true"]{background:#0F6E6E;color:#FFFFFF}
+th{font-size:12px;font-weight:600;color:#5B6470;text-align:right;padding:10px 12px;border-bottom:1px solid #E3E6EA;white-space:nowrap}
+td{padding:12px;border-bottom:1px solid #EEF0F2;text-align:right;white-space:nowrap}
+th:first-child,td:first-child,th:nth-child(2),td:nth-child(2){text-align:left}
+@media (max-width:860px){.grid2{grid-template-columns:minmax(0,1fr) !important}}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171C; background: #F4F5F7; min-height: 100%">
+<div style="max-width: 1200px; margin: 0 auto; padding: 24px 32px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; align-items: center; gap: 10px">
+<div style="width: 10px; height: 10px; border-radius: 50%; background: #0F6E6E"></div>
+<div style="font-size: 18px; font-weight: 600">Portfolio dashboard</div>
+<div style="font-size: 13px; color: #5B6470">Client abc123</div>
+</div>
+<div style="display: flex; align-items: center; gap: 8px">
+<label for="pf" style="font-size: 13px; color: #5B6470">Portfolio</label>
+<select id="pf" style="font: inherit; font-size: 14px; min-height: 40px; padding: 0 12px; border: 1px solid #D5D9DE; border-radius: 8px; background: #FFFFFF; color: #14171C">
+<option>Taxable Brokerage · P-9001</option>
+<option>Retirement Account · P-9002</option>
+<option>Empty Account · P-EMPTY</option>
+</select>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 24px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 13px; color: #5B6470">Taxable Brokerage · P-9001 · CAD</div>
+<div class="num" style="font-size: 40px; font-weight: 600; letter-spacing: -0.5px">$48,930.00</div>
+<div style="font-size: 12px; color: #5B6470">As of Oct 3, 2026, 1:31 PM</div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 40px">
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 12px; color: #5B6470">Today</div>
+<div class="num" style="font-size: 20px; font-weight: 600; color: #127A43">+$30.00 <span style="font-size: 14px">(+0.06%)</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 12px; color: #5B6470">Since inception</div>
+<div class="num" style="font-size: 20px; font-weight: 600; color: #127A43">+18.70%</div>
+</div>
+</div>
+</div>
+
+<div class="grid2" style="display: grid; grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); gap: 20px">
+<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Performance</h2>
+<div class="seg" role="group" aria-label="Range" style="display: inline-flex; border: 1px solid #D5D9DE; border-radius: 8px; overflow: hidden">
+<button type="button" aria-pressed="false">1D</button>
+<button type="button" aria-pressed="false">1M</button>
+<button type="button" aria-pressed="false">YTD</button>
+<button type="button" aria-pressed="false">1Y</button>
+<button type="button" aria-pressed="true">All</button>
+</div>
+</div>
+<div style="display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 8px">
+<div class="num" style="display: flex; flex-direction: column; justify-content: space-between; height: 220px; font-size: 11px; color: #5B6470; text-align: right">
+<span>$49k</span><span>$48k</span><span>$47k</span><span>$46k</span><span>$45k</span><span>$44k</span>
+</div>
+<svg viewBox="0 0 720 220" preserveAspectRatio="none" style="width: 100%; height: 220px; display: block" role="img" aria-label="Market value from $44,049.20 on Aug 29, 2025 to $48,930.00 on Oct 3, 2026">
+<g stroke="#EEF0F2" stroke-width="1">
+<line x1="0" y1="10" x2="720" y2="10"></line><line x1="0" y1="50" x2="720" y2="50"></line><line x1="0" y1="90" x2="720" y2="90"></line><line x1="0" y1="130" x2="720" y2="130"></line><line x1="0" y1="170" x2="720" y2="170"></line><line x1="0" y1="210" x2="720" y2="210"></line>
+</g>
+<polygon fill="#0F6E6E" fill-opacity="0.08" points="0,208 5.5,206.6 60.1,191.9 114.8,176.8 169.5,162.2 224.1,147 278.8,131.9 333.5,118.2 388.2,103.1 442.8,88.5 497.5,73.3 552.2,58.7 606.8,43.5 661.5,28.4 716.2,13.8 720,12.8 720,210 0,210"></polygon>
+<polyline fill="none" stroke="#0F6E6E" stroke-width="2" vector-effect="non-scaling-stroke" points="0,208 5.5,206.6 60.1,191.9 114.8,176.8 169.5,162.2 224.1,147 278.8,131.9 333.5,118.2 388.2,103.1 442.8,88.5 497.5,73.3 552.2,58.7 606.8,43.5 661.5,28.4 716.2,13.8 720,12.8"></polyline>
+</svg>
+<div></div>
+<div style="display: flex; justify-content: space-between; font-size: 11px; color: #5B6470"><span>Sep 2025</span><span>Jan 2026</span><span>May 2026</span><span>Oct 2026</span></div>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 16px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Allocation</h2>
+<div style="display: flex; height: 14px; border-radius: 7px; overflow: hidden" role="img" aria-label="Equity 55.79%, Fixed Income 44.21%">
+<div style="width: 55.79%; background: #0F6E6E"></div>
+<div style="width: 44.21%; background: #9CC9C9"></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 12px; font-size: 14px">
+<div style="display: grid; grid-template-columns: 12px minmax(0, 1fr) auto auto; gap: 10px; align-items: center">
+<div style="width: 12px; height: 12px; border-radius: 3px; background: #0F6E6E"></div>
+<div>Equity</div>
+<div class="num">$27,300.00</div>
+<div class="num" style="color: #5B6470; min-width: 56px; text-align: right">55.79%</div>
+</div>
+<div style="display: grid; grid-template-columns: 12px minmax(0, 1fr) auto auto; gap: 10px; align-items: center">
+<div style="width: 12px; height: 12px; border-radius: 3px; background: #9CC9C9"></div>
+<div>Fixed Income</div>
+<div class="num">$21,630.00</div>
+<div class="num" style="color: #5B6470; min-width: 56px; text-align: right">44.21%</div>
+</div>
+</div>
+</div>
+</div>
+
+<div style="background: #FFFFFF; border: 1px solid #E3E6EA; border-radius: 10px; padding: 20px 24px; display: flex; flex-direction: column; gap: 12px">
+<div style="display: flex; align-items: baseline; justify-content: space-between; gap: 12px">
+<h2 style="margin: 0; font-size: 15px; font-weight: 600">Holdings</h2>
+<div style="font-size: 13px; color: #5B6470">3 positions</div>
+</div>
+<div style="overflow-x: auto">
+<table style="width: 100%; border-collapse: collapse; font-size: 14px">
+<thead><tr>
+<th>Security</th><th>Asset class</th><th>Quantity</th><th>Avg cost</th><th>Price</th>
+<th aria-sort="descending"><button type="button" style="font: inherit; font-weight: 600; color: #14171C; background: none; border: 0; padding: 0; min-height: 24px; cursor: pointer; display: inline-flex; align-items: center; gap: 4px">Market value <svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M2 3.5 L5 6.5 L8 3.5" fill="none" stroke="currentColor" stroke-width="1.5"></path></svg></button></th>
+<th>Weight</th><th>Unrealized gain/loss</th><th>Today</th>
+</tr></thead>
+<tbody>
+<tr>
+<td><div style="font-weight: 600">AAPL</div><div style="font-size: 12px; color: #5B6470">Apple Inc.</div></td>
+<td>Equity</td><td class="num">120</td><td class="num">$200.00</td><td class="num">$227.50</td><td class="num" style="font-weight: 600">$27,300.00</td><td class="num">55.79%</td>
+<td class="num" style="color: #127A43">+$3,300.00</td><td class="num" style="color: #127A43">+$300.00 (+1.11%)</td>
+</tr>
+<tr>
+<td><div style="font-weight: 600">BND</div><div style="font-size: 12px; color: #5B6470">Vanguard Total Bond ETF</div></td>
+<td>Fixed Income</td><td class="num">300</td><td class="num">$74.00</td><td class="num">$72.10</td><td class="num" style="font-weight: 600">$21,630.00</td><td class="num">44.21%</td>
+<td class="num" style="color: #B42318">−$570.00</td><td class="num" style="color: #B42318">−$270.00 (−1.23%)</td>
+</tr>
+<tr>
+<td><div style="font-weight: 600">ZERO</div><div style="font-size: 12px; color: #5B6470">Closed Position</div></td>
+<td>Equity</td><td class="num">0</td><td class="num">$10.00</td><td class="num">$12.00</td><td class="num" style="font-weight: 600">$0.00</td><td class="num">0.00%</td>
+<td class="num" style="color: #5B6470">$0.00</td><td class="num" style="color: #5B6470">$0.00 (+20.00%)</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":1180}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>

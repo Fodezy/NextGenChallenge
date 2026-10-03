@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Portfolio summary unavailable</title>
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&amp;family=IBM+Plex+Sans:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#F4F5F7}
+a{color:#0F6E6E}a:hover{color:#0B5454}
+</style>
+</helmet>
+<div style="font-family: 'IBM Plex Sans', system-ui, sans-serif; color: #14171C; background: #F4F5F7; min-height: 100%">
+<div style="max-width: 1200px; margin: 0 auto; padding: 24px 32px 40px; box-sizing: border-box; display: flex; flex-direction: column; gap: 20px">
+
+<div style="display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px">
+<div style="display: flex; align-items: center; gap: 10px">
+<div style="width: 10px; height: 10px; border-radius: 50%; background: #0F6E6E"></div>
+<div style="font-size: 18px; font-weight: 600">Portfolio dashboard</div>
+<div style="font-size: 13px; color: #5B6470">Client abc123</div>
+</div>
+<div style="display: flex; align-items: center; gap: 8px">
+<label for="pf" style="font-size: 13px; color: #5B6470">Portfolio</label>
+<select id="pf" style="font: inherit; font-size: 14px; min-height: 40px; padding: 0 12px; border: 1px solid #D5D9DE; border-radius: 8px; background: #FFFFFF; color: #14171C">
+<option>Taxable Brokerage · P-9001</option>
+</select>
+</div>
+</div>
+
+<div role="alert" style="background: #FFFFFF; border: 1px solid #F1B8B2; border-radius: 10px; padding: 24px; display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px">
+<div style="display: flex; align-items: flex-start; gap: 14px">
+<svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true" style="flex: none; color: #B42318; margin-top: 2px"><circle cx="11" cy="11" r="9" fill="none" stroke="currentColor" stroke-width="1.6"></circle><path d="M11 6.5 V12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"></path><circle cx="11" cy="15.5" r="1.1" fill="currentColor"></circle></svg>
+<div style="display: flex; flex-direction: column; gap: 4px">
+<div style="font-size: 16px; font-weight: 600">Portfolio summary unavailable</div>
+<div style="font-size: 14px; color: #5B6470">We couldn't reach the CRM and don't have a saved copy yet. Your holdings and charts below still load.</div>
+</div>
+</div>
+<button type="button" style="font: inherit; font-size: 14px; font-weight: 600; min-height: 44px; padding: 0 20px; border: 0; border-radius: 8px; background: #0F6E6E; color: #FFFFFF; cursor: pointer">Try again</button>
+</div>
+
+<div style="font-size: 13px; color: #5B6470">Performance, allocation and holdings render as in the happy path.</div>
+
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props='{"$preview":{"width":1280,"height":400}}'>
+class Component extends DCLogic {
+renderVals() {
+return {};
+}
+}
+</script>
+</body>
+</html>
