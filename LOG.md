@@ -54,3 +54,4 @@ each task.
 [plan] Task 4 (auth) left out by team decision, out of time; README states it as unfinished work with the planned design
 [me] Final solution README (run from a fresh clone, tests, status per task, endpoints, assumptions, unfinished work) and DEMO.md (4-minute script, 3 speakers) in backend/solution/
 [me] UI: removed "Client abc123" from the header (client name only)
+[me] DEMO.md rewritten around the web UI (clicks only; one off-screen CRM switch for the stale moment; no API requests on screen)
