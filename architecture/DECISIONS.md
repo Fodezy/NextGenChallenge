@@ -28,3 +28,15 @@ Assumption IDs refer to BRIEF.md §9.
   takes points, range and today; `app/routers/history.py` validates, loads, filters, rounds.
 - **Why:** unit-testable without HTTP (BRIEF §6); output is sorted oldest first even if the file
   is not; `marketValue` is rounded to 2 dp only when the response is built.
+
+## D5 · Task 9: in-memory TTL cache with a stale fallback (A7, A12)
+- **Chose:** `app/services/cache.py` `TtlCache`, pure, time from an injected clock (one clock for
+  freshness and `cachedAt`, like D1's `get_today`). The route serves a fresh copy without calling
+  the CRM; otherwise it calls and maps, saves on success, falls back to any older copy as
+  `stale: true` on `CrmUnavailableError` (error, timeout, unreadable shape), and deletes the copy
+  on a 404. `get_portfolio_cache` is a FastAPI dependency so tests swap in a fake-clock cache.
+- **Why:** the spec's three checks (one CRM call within the TTL, stale after expiry, clear error
+  when cold) are testable in milliseconds; the stale copy is the last thing the CRM confirmed.
+- **Rejected:** caching the raw CRM body (re-maps on every hit, and a bad body could be cached);
+  a max stale age or eviction (4 ids, and the spec asks for the fallback); a per-id lock against
+  concurrent misses (not needed at this scale; noted in A12).
