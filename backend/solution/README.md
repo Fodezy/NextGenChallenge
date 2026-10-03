@@ -62,6 +62,13 @@ ruff format .
 ruff check .
 ```
 
+## Endpoints
+
+- `GET /portfolios/{id}/performance-history?range=1D|1M|YTD|1Y|All` (default `All`): daily
+  `[{date, marketValue}]`, oldest first, counted back from today (UTC). Invalid range → 400
+  `invalid_range` (exact, case-sensitive); unknown id → 404. A stale history file gives `[]` for
+  short ranges: regenerate it (above). Decisions: `architecture/DECISIONS.md` D1–D4.
+
 ## Web (backend/solution/web)
 
 Vite + React + TypeScript (strict) + Tailwind. One page for now: it calls `/health` and shows
