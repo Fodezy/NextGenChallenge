@@ -21,3 +21,4 @@ each task.
 [plan] CLAUDE.md updated for the 3-person Python/FastAPI build: owners, shared files, flat errors, decimal CAD, Ruff + pytest before merge
 [plan] Root .gitignore: ignore generated backend/fixtures/performance-history.json
 [plan] .gitattributes: LOG.md merge=union, so parallel log lines merge without conflicts
+[B] GET /portfolios/{id}/performance-history live: R5 ranges (UTC today, month-end clamp), 400 invalid_range before 404, 20 tests (39 total) green, ruff clean; A8–A10 in BRIEF §9, D1–D4 in architecture/DECISIONS.md
